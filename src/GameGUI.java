@@ -25,11 +25,11 @@ public class GameGUI extends JFrame {
         contentPane.setLayout(contentPaneLayout);
         contentPaneLayout.setHorizontalGroup(
             contentPaneLayout.createParallelGroup()
-                .addGap(0, 398, Short.MAX_VALUE)
+                .addGap(0, 498, Short.MAX_VALUE)
         );
         contentPaneLayout.setVerticalGroup(
             contentPaneLayout.createParallelGroup()
-                .addGap(0, 269, Short.MAX_VALUE)
+                .addGap(0, 469, Short.MAX_VALUE)
         );
         pack();
         setLocationRelativeTo(getOwner());
