@@ -7,9 +7,15 @@ public class GameCharacter {
     int strength_points;
     int dexterity_points;
 
-    public void attack(){}
+    public GameCharacter() {
+    }
 
-    public void defend(){}
+    public void attack() {
+    }
 
-    public void die(){}
+    public void defend() {
+    }
+
+    public void die() {
+    }
 }
