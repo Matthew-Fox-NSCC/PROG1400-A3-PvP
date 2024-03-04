@@ -31,4 +31,8 @@ public class guiScreens {
             frame.setVisible(true);
             frame.setSize(600, 600);
         }
+
+        public void closeFrame(JFrame frame) {
+            frame.setVisible(false);
+        }
 }
