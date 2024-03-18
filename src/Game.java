@@ -2,15 +2,10 @@ import guiElements.BattleScreen2;
 import guiElements.PlayerArmorySelection2;
 import guiElements.SplashScreen2;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.Objects;
 
 public class Game {
