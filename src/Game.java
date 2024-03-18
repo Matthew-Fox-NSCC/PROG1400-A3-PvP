@@ -6,11 +6,7 @@ public class Game {
 
     public void Play() {
 // schedule this for the event dispatch thread (edt)
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                PanelProcessing.displayJFrame();
-            }
-        }); // end inner class The semicolon after means that it is a class.
+        SwingUtilities.invokeLater(PanelProcessing::displayJFrame); // end inner class The semicolon after means that it is a class.
     } // end main
 
     public void battle() {
