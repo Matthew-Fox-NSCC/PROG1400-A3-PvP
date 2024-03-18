@@ -1,5 +1,9 @@
 package GameEntities;
 
+import javax.swing.*;
+import java.awt.*;
+import java.util.Objects;
+
 public abstract class GameCharacter {
 
     private int health_points;
@@ -61,6 +65,14 @@ public abstract class GameCharacter {
 
     public void setImageURL(String imageURL) {
         this.imageURL = imageURL;
+    }
+
+    public ImageIcon getImageIcon() {
+        return new ImageIcon(new javax.swing.ImageIcon(Objects.requireNonNull(getClass().getResource(imageURL))).getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH));
+    }
+
+    public ImageIcon getImageIcon(int width, int height) {
+        return new ImageIcon(new javax.swing.ImageIcon(Objects.requireNonNull(getClass().getResource(imageURL))).getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH));
     }
 
     public void attack() {
