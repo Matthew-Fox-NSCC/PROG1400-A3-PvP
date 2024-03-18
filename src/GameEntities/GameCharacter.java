@@ -23,6 +23,46 @@ public abstract class GameCharacter {
         this.imageURL = imageURL;
     }
 
+    public int getHealth_points() {
+        return health_points;
+    }
+
+    public void setHealth_points(int health_points) {
+        this.health_points = health_points;
+    }
+
+    public int getArmor_points() {
+        return armor_points;
+    }
+
+    public void setArmor_points(int armor_points) {
+        this.armor_points = armor_points;
+    }
+
+    public int getStrength_points() {
+        return strength_points;
+    }
+
+    public void setStrength_points(int strength_points) {
+        this.strength_points = strength_points;
+    }
+
+    public int getDexterity_points() {
+        return dexterity_points;
+    }
+
+    public void setDexterity_points(int dexterity_points) {
+        this.dexterity_points = dexterity_points;
+    }
+
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
+    }
+
     public void attack() {
     }
 
