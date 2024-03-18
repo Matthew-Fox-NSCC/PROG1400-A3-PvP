@@ -2,26 +2,32 @@ import guiElements.BattleScreen2;
 import guiElements.PlayerArmorySelection2;
 import guiElements.SplashScreen2;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.Objects;
 
 public class Game {
 
-    static JFrame frame = new JFrame("PVP Game"); // You can leave it here or not.
-    static SplashScreen2 splashPage = new SplashScreen2(); // Represents each the container
-    static PlayerArmorySelection2 armoryPage = new PlayerArmorySelection2();
-    static BattleScreen2 battlePage = new BattleScreen2();
+    JFrame frame = new JFrame("PVP Game"); // You can leave it here or not.
+    SplashScreen2 splashPage = new SplashScreen2(); // Represents each the container
+    PlayerArmorySelection2 armoryPage = new PlayerArmorySelection2();
+    BattleScreen2 battlePage = new BattleScreen2();
 
-    static void displayPanelSplash()//one for each page
+    void displayPanelSplash()//one for each page
     {
         frame.add(splashPage.panel);
         frame.repaint();
         frame.validate(); // is necessary
     }
 
-    static void displayPanelArmory()//one for each page
+    void displayPanelArmory()//one for each page
     {
         frame.remove(splashPage.panel); // Takes away the previous panel.
         frame.add(armoryPage.panel);
@@ -29,12 +35,49 @@ public class Game {
         frame.validate(); // is necessary
     }
 
-    static void displayPanelBattle()//one for each page
+    void displayPanelBattle()//one for each page
     {
         frame.remove(armoryPage.panel); // Takes away the previous panel.
         frame.add(battlePage.panel);
         frame.repaint();
         frame.validate(); // is necessary
+
+//        JLabel label = new JLabel();
+//        label.setIcon(new ImageIcon(new ImageIcon("pictures/enemies/aboleth.jpg").getImage().getScaledInstance(600, 600, Image.SCALE_SMOOTH)));
+//        frame.add(label);
+//        frame.pack();
+
+        // TODO move enemy icon to enemy class
+//        ImagePanel imagePanel = new ImagePanel("pictures/enemies/aboleth.jpg");
+//        frame.add(imagePanel);
+
+//        CustomPanel customPanel = new CustomPanel();
+//        battlePage.enemyPanel.add(customPanel);
+
+//        try {
+//            BufferedImage enemyPicture = ImageIO.read(new URI("pictures/enemies/aboleth.jpg").toURL());
+//        } catch (IOException | URISyntaxException e) {
+//            throw new RuntimeException(e);
+//        }
+//        ImageIcon enemyIcon = new ImageIcon(new ImageIcon("pictures/enemies/aboleth.jpg").getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH));
+//        battlePage.enemyPanel.paintComponents();
+
+//        ImageIcon enemyIcon = new ImageIcon(new ImageIcon(getClass().getResource("pictures/enemies/aboleth.jpg").getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH)));
+//        ImageIcon enemyIcon = new ImageIcon(new ImageIcon("pictures/enemies/aboleth.jpg").getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH));
+        ImageIcon enemyIcon = new ImageIcon(new javax.swing.ImageIcon(Objects.requireNonNull(getClass().getResource("pictures/enemies/aboleth.jpg"))).getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH));
+        battlePage.enemyPicture.setIcon(enemyIcon);
+//
+        frame.repaint();
+        frame.validate(); // is necessary
+//        frame.update(battlePage.enemyPanel.getGraphics());
+    }
+
+    void displayJFrame() { // method that it is gonna be called
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frame.setPreferredSize(new Dimension(600, 600));
+        frame.pack();
+        frame.setVisible(true);
+        displayPanelSplash();
     }
 
     public void addListeners() {
@@ -68,14 +111,6 @@ public class Game {
 //                displayPanelArmory();
 //            }
 //        });
-    }
-
-    static void displayJFrame() { // method that it is gonna be called
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.setPreferredSize(new Dimension(600, 600));
-        frame.pack();
-        frame.setVisible(true);
-        displayPanelSplash();
     }
 
     public void Play() {
