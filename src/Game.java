@@ -6,9 +6,7 @@ public class Game {
 
     public void Play() {
         SwingUtilities.invokeLater(PanelProcessing::displayJFrame);
-    }
 
-    public void battle() {
         double secondsToSleep = 2.0;
         boolean done = false;
         while (!done) {
@@ -19,6 +17,9 @@ public class Game {
                 System.out.println(e.getMessage());
             }
         }
+    }
+
+    public void battle() {
     }
 
     public boolean update() {
