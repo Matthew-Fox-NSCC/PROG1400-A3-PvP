@@ -6,8 +6,6 @@ import guiElements.SplashScreen;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class PanelProcessing {
     static JFrame frame = new JFrame("PVP Game");
@@ -21,6 +19,7 @@ public class PanelProcessing {
         frame.setPreferredSize(new Dimension(600, 600));
         frame.pack();
         frame.setVisible(true);
+
         addListeners();
         displayPanelSplash();
     }
@@ -64,21 +63,11 @@ public class PanelProcessing {
     }
 
     private static void addSplashListeners() {
-        splashPage.OKButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                displayPanelArmory();
-            }
-        });
+        splashPage.OKButton.addActionListener(e -> displayPanelArmory());
     }
 
     private static void addArmoryListeners() {
-        armoryPage.OKButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                displayPanelBattle();
-            }
-        });
+        armoryPage.OKButton.addActionListener(e -> displayPanelBattle());
     }
 
     private static void addBattleListeners() {
