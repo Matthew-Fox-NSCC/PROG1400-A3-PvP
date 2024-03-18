@@ -1,13 +1,6 @@
 import guiCode.PanelProcessing;
-import guiElements.BattleScreen;
-import guiElements.PlayerArmorySelection;
-import guiElements.SplashScreen;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.Objects;
 
 public class Game {
 
