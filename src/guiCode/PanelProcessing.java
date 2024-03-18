@@ -21,6 +21,7 @@ public class PanelProcessing {
         frame.setVisible(true);
 
         addListeners();
+        fillElements();
         displayPanelSplash();
     }
     //endregion
@@ -52,6 +53,17 @@ public class PanelProcessing {
 
         frame.repaint();
         frame.validate(); // is necessary
+    }
+    //endregion
+
+    //region elementFilling
+    public static void fillElements() {
+        fillSplashPanel();
+    }
+
+    public static void fillSplashPanel() {
+        // TODO Add a description of the game
+        splashPage.splashText.setText("PVP GAME");
     }
     //endregion
 
