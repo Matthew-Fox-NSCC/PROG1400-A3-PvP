@@ -2,7 +2,7 @@ package guiElements;
 
 import javax.swing.*;
 
-public class PlayerArmorySelection2 {
+public class PlayerArmorySelection {
     public JPanel panel;
     private JList classSelectionList;
     private JList list3;

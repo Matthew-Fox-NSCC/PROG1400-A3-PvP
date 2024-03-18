@@ -1,10 +1,8 @@
 package guiElements;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-public class SplashScreen2 {
+public class SplashScreen {
     public JPanel panel;
     public JButton OKButton;
     private JTextArea textArea1;

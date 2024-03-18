@@ -1,6 +1,6 @@
-import guiElements.BattleScreen2;
-import guiElements.PlayerArmorySelection2;
-import guiElements.SplashScreen2;
+import guiElements.BattleScreen;
+import guiElements.PlayerArmorySelection;
+import guiElements.SplashScreen;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,9 +11,9 @@ import java.util.Objects;
 public class Game {
 
     JFrame frame = new JFrame("PVP Game"); // You can leave it here or not.
-    SplashScreen2 splashPage = new SplashScreen2(); // Represents each the container
-    PlayerArmorySelection2 armoryPage = new PlayerArmorySelection2();
-    BattleScreen2 battlePage = new BattleScreen2();
+    SplashScreen splashPage = new SplashScreen(); // Represents each the container
+    PlayerArmorySelection armoryPage = new PlayerArmorySelection();
+    BattleScreen battlePage = new BattleScreen();
 
     void displayPanelSplash()//one for each page
     {
