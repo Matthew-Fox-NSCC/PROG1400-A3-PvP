@@ -1,6 +1,6 @@
 package GameEntities;
 
-public class GameCharacter {
+public abstract class GameCharacter {
 
     int health_points;
     int armor_points;
