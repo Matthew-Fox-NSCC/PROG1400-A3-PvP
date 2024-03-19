@@ -2,8 +2,8 @@ package GameEntities;
 
 public class PlayerCharacter extends GameCharacter {
     private String classType;
-    private Equipment weapon;
-    private Equipment armor;
+    private Equipment weapon = new Equipment();
+    private Equipment armor = new Equipment();
 
     public PlayerCharacter(int health_points, int armor_points, int strength_points, int dexterity_points) {
         super(health_points, armor_points, strength_points, dexterity_points);
