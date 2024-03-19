@@ -37,7 +37,7 @@ public class Game {
             } catch (InterruptedException e) {
                 System.out.println(e.getMessage());
             }
-            System.out.println(player.toString());
+//            System.out.println(player.toString());
         }
     }
 }

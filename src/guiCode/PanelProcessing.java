@@ -72,6 +72,8 @@ public class PanelProcessing {
     }
 
     public static void fillArmoryPanel() {
+        armoryPage.playerInformation.setLineWrap(true);
+        armoryPage.playerInformation.setText(player.toString());
     }
     //endregion
 
@@ -89,7 +91,10 @@ public class PanelProcessing {
     private static void addArmoryListeners() {
         armoryPage.OKButton.addActionListener(e -> displayPanelBattle());
 
-        armoryPage.classSelectionList.getSelectionModel().addListSelectionListener(e -> player.setClassType(armoryPage.classSelectionList.getSelectedValue().toString()));
+        armoryPage.classSelectionList.getSelectionModel().addListSelectionListener(e -> {
+            player.setClassType(armoryPage.classSelectionList.getSelectedValue().toString());
+            fillArmoryPanel();
+        });
     }
 
     private static void addBattleListeners() {

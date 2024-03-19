@@ -11,4 +11,5 @@ public class PlayerArmorySelection {
     private JButton rollButton;
     private JButton rightButton;
     private JButton leftButton;
+    public JTextArea playerInformation;
 }
