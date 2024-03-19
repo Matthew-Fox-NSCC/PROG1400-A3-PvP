@@ -51,15 +51,12 @@ public class PlayerCharacter extends GameCharacter {
 
     @Override
     public String toString() {
-        return "PlayerCharacter{" +
-                "classType='" + classType + '\'' +
-                ", weapon=" + weapon +
-                ", armor=" + armor +
-                ", health_points=" + health_points +
-                ", armor_points=" + armor_points +
-                ", strength_points=" + strength_points +
-                ", dexterity_points=" + dexterity_points +
-                ", imageURL='" + imageURL + '\'' +
-                '}';
+        return "class = " + classType + '\n' +
+                "weapon = " + weapon + '\n' +
+                "armor = " + armor + '\n' +
+                "health = " + health_points + '\n' +
+                "armor_points = " + armor_points + '\n' +
+                "strength = " + strength_points + '\n' +
+                "dexterity = " + dexterity_points + '\n';
     }
 }
