@@ -1,8 +1,14 @@
+import GameEntities.ActiveEntities;
+import GameEntities.EnemyCharacter;
+import GameEntities.PlayerCharacter;
 import guiCode.PanelProcessing;
 
 import javax.swing.*;
 
 public class Game {
+
+    public PlayerCharacter player = ActiveEntities.player;
+    public EnemyCharacter enemy = ActiveEntities.enemy;
 
     public void Play() {
         SwingUtilities.invokeLater(PanelProcessing::displayJFrame);
@@ -25,3 +31,4 @@ public class Game {
         return false;
     }
 }
+

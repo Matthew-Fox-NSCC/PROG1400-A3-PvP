@@ -1,12 +1,12 @@
 package guiCode;
 
+import GameEntities.EnemyCharacter;
+import GameEntities.PlayerCharacter;
 import guiElements.BattleScreen;
 import guiElements.PlayerArmorySelection;
 import guiElements.SplashScreen;
-
+import GameEntities.ActiveEntities;
 import javax.swing.*;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 
 public class PanelProcessing {
@@ -14,6 +14,9 @@ public class PanelProcessing {
     static SplashScreen splashPage = new SplashScreen();
     static PlayerArmorySelection armoryPage = new PlayerArmorySelection();
     static BattleScreen battlePage = new BattleScreen();
+
+    static PlayerCharacter player = ActiveEntities.player;
+    public EnemyCharacter enemy = ActiveEntities.enemy;
 
     //region displayFrame
     public static void displayJFrame() {
@@ -86,7 +89,7 @@ public class PanelProcessing {
     private static void addArmoryListeners() {
         armoryPage.OKButton.addActionListener(e -> displayPanelBattle());
 
-        armoryPage.classSelectionList.getSelectionModel().addListSelectionListener(e -> armoryPage.classSelectionList.getSelectedValue());
+        armoryPage.classSelectionList.getSelectionModel().addListSelectionListener(e -> player.setClassType(armoryPage.classSelectionList.getSelectedValue().toString()));
     }
 
     private static void addBattleListeners() {
