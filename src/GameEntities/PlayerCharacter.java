@@ -1,7 +1,7 @@
 package GameEntities;
 
 public class PlayerCharacter extends GameCharacter {
-    public String classType;
+    private String classType;
     private Equipment weapon;
     private Equipment armor;
 
@@ -11,6 +11,30 @@ public class PlayerCharacter extends GameCharacter {
 
     public PlayerCharacter(int health_points, int armor_points, int strength_points, int dexterity_points, String imageURL) {
         super(health_points, armor_points, strength_points, dexterity_points, imageURL);
+    }
+
+    public String getClassType() {
+        return classType;
+    }
+
+    public void setClassType(String classType) {
+        this.classType = classType;
+    }
+
+    public Equipment getWeapon() {
+        return weapon;
+    }
+
+    public void setWeapon(Equipment weapon) {
+        this.weapon = weapon;
+    }
+
+    public Equipment getArmor() {
+        return armor;
+    }
+
+    public void setArmor(Equipment armor) {
+        this.armor = armor;
     }
 
     public void equipWeapon(Equipment weapon) {
