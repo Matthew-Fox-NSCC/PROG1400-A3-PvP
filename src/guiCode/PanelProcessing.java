@@ -5,6 +5,8 @@ import guiElements.PlayerArmorySelection;
 import guiElements.SplashScreen;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 
 public class PanelProcessing {
@@ -65,6 +67,9 @@ public class PanelProcessing {
         // TODO Add a description of the game
         splashPage.splashText.setText("PVP GAME");
     }
+
+    public static void fillArmoryPanel() {
+    }
     //endregion
 
     //region elementListeners
@@ -80,6 +85,13 @@ public class PanelProcessing {
 
     private static void addArmoryListeners() {
         armoryPage.OKButton.addActionListener(e -> displayPanelBattle());
+
+        armoryPage.classSelectionList.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                armoryPage.classSelectionList.getSelectedValue();
+            }
+        });
     }
 
     private static void addBattleListeners() {

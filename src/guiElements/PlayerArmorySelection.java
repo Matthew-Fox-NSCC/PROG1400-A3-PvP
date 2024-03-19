@@ -4,7 +4,11 @@ import javax.swing.*;
 
 public class PlayerArmorySelection {
     public JPanel panel;
-    private JList classSelectionList;
-    private JList list3;
+    public JList classSelectionList;
+    private JList weaponStatList;
     public JButton OKButton;
+    public JList playerStatList;
+    private JButton rollButton;
+    private JButton rightButton;
+    private JButton leftButton;
 }

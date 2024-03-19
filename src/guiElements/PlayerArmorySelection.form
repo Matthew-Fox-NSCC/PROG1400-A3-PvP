@@ -35,7 +35,7 @@
                   <text value="Stats"/>
                 </properties>
               </component>
-              <component id="27985" class="javax.swing.JList" default-binding="true">
+              <component id="27985" class="javax.swing.JList" binding="playerStatList">
                 <constraints>
                   <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="2" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
                     <minimum-size width="-1" height="200"/>
@@ -100,7 +100,7 @@
                   <text value="Weapon"/>
                 </properties>
               </component>
-              <component id="70fb7" class="javax.swing.JList" binding="list3" default-binding="true">
+              <component id="70fb7" class="javax.swing.JList" binding="weaponStatList">
                 <constraints>
                   <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="2" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
                     <minimum-size width="-1" height="200"/>
@@ -176,7 +176,7 @@
                   </model>
                 </properties>
               </component>
-              <component id="5824d" class="javax.swing.JButton" default-binding="true">
+              <component id="5824d" class="javax.swing.JButton" binding="rollButton">
                 <constraints>
                   <grid row="5" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -184,7 +184,7 @@
                   <text value="ROLL"/>
                 </properties>
               </component>
-              <component id="c6eae" class="javax.swing.JButton" default-binding="true">
+              <component id="c6eae" class="javax.swing.JButton" binding="rightButton">
                 <constraints>
                   <grid row="3" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -228,7 +228,7 @@
                   <text value="OK"/>
                 </properties>
               </component>
-              <component id="aa342" class="javax.swing.JButton" default-binding="true">
+              <component id="aa342" class="javax.swing.JButton" binding="leftButton">
                 <constraints>
                   <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
