@@ -70,4 +70,11 @@ public class Equipment {
         Random random = new Random();
         return random.nextInt(minimum, maximum);
     }
+
+    @Override
+    public String toString() {
+        return "Equipment{" +
+                "name='" + name + '\'' +
+                '}';
+    }
 }
