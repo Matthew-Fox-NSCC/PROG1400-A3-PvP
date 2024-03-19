@@ -6,11 +6,11 @@ import java.util.Objects;
 
 public abstract class GameCharacter {
 
-    private int health_points;
-    private int armor_points;
-    private int strength_points;
-    private int dexterity_points;
-    private String imageURL;
+    protected int health_points;
+    protected int armor_points;
+    protected int strength_points;
+    protected int dexterity_points;
+    protected String imageURL;
 
     public GameCharacter(int health_points, int armor_points, int strength_points, int dexterity_points) {
         this.health_points = health_points;
@@ -26,6 +26,8 @@ public abstract class GameCharacter {
         this.dexterity_points = dexterity_points;
         this.imageURL = imageURL;
     }
+
+    public GameCharacter() {}
 
     public int getHealth_points() {
         return health_points;
