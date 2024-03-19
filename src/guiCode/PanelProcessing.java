@@ -21,7 +21,7 @@ public class PanelProcessing {
     //region displayFrame
     public static void displayJFrame() {
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.setPreferredSize(new Dimension(600, 600));
+        frame.setPreferredSize(new Dimension(1000, 800));
         frame.pack();
         frame.setVisible(true);
 
