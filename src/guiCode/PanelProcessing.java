@@ -86,12 +86,7 @@ public class PanelProcessing {
     private static void addArmoryListeners() {
         armoryPage.OKButton.addActionListener(e -> displayPanelBattle());
 
-        armoryPage.classSelectionList.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
-            @Override
-            public void valueChanged(ListSelectionEvent e) {
-                armoryPage.classSelectionList.getSelectedValue();
-            }
-        });
+        armoryPage.classSelectionList.getSelectionModel().addListSelectionListener(e -> armoryPage.classSelectionList.getSelectedValue());
     }
 
     private static void addBattleListeners() {
