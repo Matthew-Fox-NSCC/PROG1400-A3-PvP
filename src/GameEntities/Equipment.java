@@ -24,6 +24,8 @@ public class Equipment {
         this.imageURL = imageURL;
     }
 
+    public Equipment() {}
+
     public int getMinimum() {
         return minimum;
     }
