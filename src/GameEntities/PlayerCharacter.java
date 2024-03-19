@@ -57,6 +57,7 @@ public class PlayerCharacter extends GameCharacter {
                 "health = " + health_points + '\n' +
                 "armor_points = " + armor_points + '\n' +
                 "strength = " + strength_points + '\n' +
-                "dexterity = " + dexterity_points + '\n';
+                "dexterity = " + dexterity_points + '\n' +
+                "imageURL = " + imageURL;
     }
 }

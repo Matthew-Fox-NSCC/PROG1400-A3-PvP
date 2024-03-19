@@ -9,5 +9,5 @@ public class BattleScreen {
     private JPanel playerPanel;
     public JPanel enemyPanel;
     public JLabel enemyPicture;
-    private JLabel playerPicture;
+    public JLabel playerPicture;
 }

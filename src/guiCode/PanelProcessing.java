@@ -1,22 +1,23 @@
 package guiCode;
 
+import GameEntities.ActiveEntities;
 import GameEntities.EnemyCharacter;
 import GameEntities.PlayerCharacter;
 import guiElements.BattleScreen;
 import guiElements.PlayerArmorySelection;
 import guiElements.SplashScreen;
-import GameEntities.ActiveEntities;
+
 import javax.swing.*;
 import java.awt.*;
+import java.util.Objects;
 
 public class PanelProcessing {
     static JFrame frame = new JFrame("PVP Game");
     static SplashScreen splashPage = new SplashScreen();
     static PlayerArmorySelection armoryPage = new PlayerArmorySelection();
     static BattleScreen battlePage = new BattleScreen();
-
     static PlayerCharacter player = ActiveEntities.player;
-    public EnemyCharacter enemy = ActiveEntities.enemy;
+    static EnemyCharacter enemy = ActiveEntities.enemy;
 
     //region displayFrame
     public static void displayJFrame() {
@@ -33,7 +34,6 @@ public class PanelProcessing {
     //endregion
 
     //region displayPanels
-
     private static void displayPanelSplash() {
         frame.add(splashPage.panel);
         frame.repaint();
@@ -58,7 +58,7 @@ public class PanelProcessing {
 //        battlePage.enemyPicture.setIcon(enemyIcon);
 
         frame.repaint();
-        frame.validate(); // is necessary
+        frame.validate();
     }
     //endregion
 
@@ -76,6 +76,10 @@ public class PanelProcessing {
         armoryPage.playerInformation.setLineWrap(true);
         armoryPage.playerInformation.setText(player.toString());
     }
+
+    public static void fillBattlePanel() {
+        battlePage.playerPicture.setIcon(player.getImageIcon());
+    }
     //endregion
 
     //region elementListeners
@@ -90,10 +94,21 @@ public class PanelProcessing {
     }
 
     private static void addArmoryListeners() {
-        armoryPage.OKButton.addActionListener(e -> displayPanelBattle());
+        armoryPage.OKButton.addActionListener(e -> {
+            displayPanelBattle();
+            fillBattlePanel();
+        });
 
         armoryPage.classSelectionList.getSelectionModel().addListSelectionListener(e -> {
             player.setClassType(armoryPage.classSelectionList.getSelectedValue().toString());
+            switch (player.getClassType()) {
+                case "Wizard":
+                    player.setImageURL("pictures/players/wizard.png");
+                    break;
+                case "Knight":
+                    player.setImageURL("pictures/players/knight.jpg");
+                    break;
+            }
             fillArmoryPanel();
         });
     }
