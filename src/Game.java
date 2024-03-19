@@ -12,6 +12,7 @@ public class Game {
 
     public void Play() {
         SwingUtilities.invokeLater(PanelProcessing::displayJFrame);
+        update();
     }
 
     public void battle() {
@@ -27,8 +28,17 @@ public class Game {
 //        }
     }
 
-    public boolean update() {
-        return false;
+    public void update() {
+        double secondsToSleep = 0.5;
+        boolean done = false;
+        while (true) {
+            try {
+                Thread.sleep((int) (secondsToSleep * 1000));
+            } catch (InterruptedException e) {
+                System.out.println(e.getMessage());
+            }
+            System.out.println(player.toString());
+        }
     }
 }
 

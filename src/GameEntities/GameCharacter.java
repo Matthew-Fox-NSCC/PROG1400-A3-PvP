@@ -85,4 +85,15 @@ public abstract class GameCharacter {
 
     public void die() {
     }
+
+    @Override
+    public String toString() {
+        return "GameCharacter{" +
+                "health_points=" + health_points +
+                ", armor_points=" + armor_points +
+                ", strength_points=" + strength_points +
+                ", dexterity_points=" + dexterity_points +
+                ", imageURL='" + imageURL + '\'' +
+                '}';
+    }
 }

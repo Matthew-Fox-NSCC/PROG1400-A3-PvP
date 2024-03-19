@@ -13,6 +13,10 @@ public class PlayerCharacter extends GameCharacter {
         super(health_points, armor_points, strength_points, dexterity_points, imageURL);
     }
 
+    public PlayerCharacter() {
+        super();
+    }
+
     public String getClassType() {
         return classType;
     }
@@ -43,5 +47,19 @@ public class PlayerCharacter extends GameCharacter {
 
     public void equipArmor(Equipment armor) {
         this.armor = armor;
+    }
+
+    @Override
+    public String toString() {
+        return "PlayerCharacter{" +
+                "classType='" + classType + '\'' +
+                ", weapon=" + weapon +
+                ", armor=" + armor +
+                ", health_points=" + health_points +
+                ", armor_points=" + armor_points +
+                ", strength_points=" + strength_points +
+                ", dexterity_points=" + dexterity_points +
+                ", imageURL='" + imageURL + '\'' +
+                '}';
     }
 }
