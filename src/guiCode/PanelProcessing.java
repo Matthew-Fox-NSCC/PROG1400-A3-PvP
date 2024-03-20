@@ -9,15 +9,15 @@ import guiElements.SplashScreen;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.Objects;
 
 public class PanelProcessing {
+    public static BattleScreen battlePage = new BattleScreen();
     static JFrame frame = new JFrame("PVP Game");
     static SplashScreen splashPage = new SplashScreen();
     static PlayerArmorySelection armoryPage = new PlayerArmorySelection();
-    static BattleScreen battlePage = new BattleScreen();
     static PlayerCharacter player = ActiveEntities.player;
     static EnemyCharacter enemy = ActiveEntities.enemy;
+
 
     //region displayFrame
     public static void displayJFrame() {
@@ -54,8 +54,8 @@ public class PanelProcessing {
         frame.validate();
 
         // TODO move enemy icon to enemy class
-//        ImageIcon enemyIcon = new ImageIcon(new javax.swing.ImageIcon(Objects.requireNonNull(getClass().getResource("pictures/enemies/aboleth.jpg"))).getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH));
-//        battlePage.enemyPicture.setIcon(enemyIcon);
+        ImageIcon enemyIcon = new ImageIcon(new javax.swing.ImageIcon("pictures/enemies/aboleth.jpg").getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH));
+        battlePage.enemyPicture.setIcon(enemyIcon);
 
         frame.repaint();
         frame.validate();
@@ -78,7 +78,7 @@ public class PanelProcessing {
     }
 
     public static void fillBattlePanel() {
-        battlePage.playerPicture.setIcon(player.getImageIcon());
+//        battlePage.playerPicture.setIcon(player.getImageIcon());
     }
     //endregion
 

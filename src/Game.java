@@ -1,9 +1,11 @@
 import GameEntities.ActiveEntities;
 import GameEntities.EnemyCharacter;
 import GameEntities.PlayerCharacter;
-import guiCode.PanelProcessing;
 
 import javax.swing.*;
+
+import static guiCode.PanelProcessing.battlePage;
+import static guiCode.PanelProcessing.displayJFrame;
 
 public class Game {
 
@@ -11,7 +13,11 @@ public class Game {
     public EnemyCharacter enemy = ActiveEntities.enemy;
 
     public void Play() {
-        SwingUtilities.invokeLater(PanelProcessing::displayJFrame);
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                displayJFrame();
+            }
+        });
         update();
     }
 
@@ -38,6 +44,8 @@ public class Game {
                 System.out.println(e.getMessage());
             }
 //            System.out.println(player.toString());
+            battlePage.enemyPicture.setIcon(enemy.getImageIcon());
+            battlePage.playerPicture.setIcon(player.getImageIcon());
         }
     }
 }
