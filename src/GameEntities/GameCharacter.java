@@ -77,10 +77,8 @@ public abstract class GameCharacter {
         return new ImageIcon(new javax.swing.ImageIcon(Objects.requireNonNull(getClass().getResource(imageURL))).getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH));
     }
 
-    public void attack() {
-    }
-
-    public void defend() {
+    public int attack(GameCharacter character) {
+        return 0;
     }
 
     public void die() {

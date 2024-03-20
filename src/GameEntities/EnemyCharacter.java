@@ -17,4 +17,17 @@ public class EnemyCharacter extends GameCharacter {
         this.dexterity_points = 10;
         this.imageURL = "pictures/enemies/aboleth.jpg";
     }
+
+    /**
+     * Gets the attack value.
+     * @param player The player to attack
+     * @return The enemy attack value
+     */
+    public int attack(PlayerCharacter player) {
+        // I think the total damage should be character attack - enemy defense.
+        // Strength is base attack and dexterity modifies the hit rate
+        // Points are scaled out of 10
+        // Equipment weapon adds bonus attack damage
+        return this.strength_points - player.armor_points - player.getArmor().calc();
+    }
 }
