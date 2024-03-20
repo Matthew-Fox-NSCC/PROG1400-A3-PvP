@@ -17,6 +17,14 @@ public class PlayerCharacter extends GameCharacter {
         super();
     }
 
+    public int attack(EnemyCharacter enemy) {
+        // I think the total damage should be character attack - enemy defense.
+        // Strength is base attack and dexterity modifies the hit rate
+        // Points are scaled out of 10
+        // Equipment weapon adds bonus attack damage
+        return this.strength_points + weapon.calc() - enemy.armor_points;
+    }
+
     public String getClassType() {
         return classType;
     }
