@@ -57,6 +57,14 @@ public class PanelProcessing {
 //        ImageIcon enemyIcon = new ImageIcon(new javax.swing.ImageIcon("pictures/enemies/aboleth.jpg").getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH));
 //        battlePage.enemyPicture.setIcon(enemyIcon);
 
+//        enemy.setImageURL("pictures/enemies/aboleth.png");
+//        battlePage.enemyPicture.setIcon(enemy.getImageIcon());
+
+//        battlePage.enemyPicture.setIcon(new ImageIcon(PanelProcessing.class.getResource("pictures/enemies/aboleth.jpg")));
+//        battlePage.enemyPicture.setIcon(new ImageIcon(PanelProcessing.class.getResource("pictures/enemies/aboleth.png")));
+
+//        ImageIcon x = new ImageIcon(PanelProcessing.class.getResource("images2/axe.png"));
+
         frame.repaint();
         frame.validate();
     }
