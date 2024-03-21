@@ -81,8 +81,8 @@ public class PanelProcessing {
 
     public static void fillBattlePanel() {
 //        battlePage.playerPicture.setIcon(player.getImageIcon());
-        enemy.setImageURL("I:\\FoxCloud\\Life\\NSCCProgramming\\PROG-1400\\Assignments\\Assignment3\\PROG1400-A3-PvP\\src\\pictures\\enemies\\aboleth.png");
-        battlePage.enemyPicture.setIcon(enemy.getImageIcon());
+//        enemy.setImageURL("I:\\FoxCloud\\Life\\NSCCProgramming\\PROG-1400\\Assignments\\Assignment3\\PROG1400-A3-PvP\\src\\pictures\\enemies\\aboleth.png");
+//        battlePage.enemyPicture.setIcon(enemy.getImageIcon());
     }
     //endregion
 
