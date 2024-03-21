@@ -54,8 +54,8 @@ public class PanelProcessing {
         frame.validate();
 
         // TODO move enemy icon to enemy class
-        ImageIcon enemyIcon = new ImageIcon(new javax.swing.ImageIcon("pictures/enemies/aboleth.jpg").getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH));
-        battlePage.enemyPicture.setIcon(enemyIcon);
+//        ImageIcon enemyIcon = new ImageIcon(new javax.swing.ImageIcon("pictures/enemies/aboleth.jpg").getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH));
+//        battlePage.enemyPicture.setIcon(enemyIcon);
 
         frame.repaint();
         frame.validate();
@@ -65,6 +65,8 @@ public class PanelProcessing {
     //region elementFilling
     public static void fillElements() {
         fillSplashPanel();
+        fillArmoryPanel();
+        fillBattlePanel();
     }
 
     public static void fillSplashPanel() {
@@ -79,6 +81,8 @@ public class PanelProcessing {
 
     public static void fillBattlePanel() {
 //        battlePage.playerPicture.setIcon(player.getImageIcon());
+        enemy.setImageURL("I:\\FoxCloud\\Life\\NSCCProgramming\\PROG-1400\\Assignments\\Assignment3\\PROG1400-A3-PvP\\src\\pictures\\enemies\\aboleth.png");
+        battlePage.enemyPicture.setIcon(enemy.getImageIcon());
     }
     //endregion
 
