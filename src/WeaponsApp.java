@@ -13,7 +13,7 @@ public class WeaponsApp {
     protected JPanel armoryPanel = new JPanel();
     protected ImageIcon[] weaponsArray = new ImageIcon[2];
 
-    protected BusinessClass businessClass = new BusinessClass();//stub demo of com with BC for demo purpose
+    protected BusinessClass businessClass = new BusinessClass();
 
     public WeaponsApp() {
         initialize();
@@ -30,14 +30,14 @@ public class WeaponsApp {
                 }
             }
         });
-    }//end main
+    }
 
     private void initialize() {
         frame.setBounds(800, 250, 800, 800);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(new CardLayout(0, 0));
         loadSplash();
-    }// end initialize
+    }
 
     public void loadSplash() {
 
@@ -51,9 +51,8 @@ public class WeaponsApp {
         JButton gotoPlayer = new JButton("goto player");
         gotoPlayer.setBounds(0, 0, 100, 20);
 
-        gotoPlayer.addActionListener(new ActionListener() {    //add an event and take action
+        gotoPlayer.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                System.out.println(businessClass.getDex()); //stub demo of com with BC for demo purpose
                 loadArmory();
             }
         });
@@ -81,7 +80,7 @@ public class WeaponsApp {
         JList weaponList = getjList(weaponImage);
         armoryPanel.add(weaponList);
 
-    }//end load armory
+    }
 
     private JList getjList(JLabel weaponImage) {
         JList list = new JList();
@@ -105,4 +104,4 @@ public class WeaponsApp {
         return list;
     }
 
-}//end class
+}
