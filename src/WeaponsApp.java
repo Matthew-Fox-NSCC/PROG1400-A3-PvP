@@ -19,19 +19,6 @@ public class WeaponsApp {
         initialize();
     }
 
-    public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    WeaponsApp window = new WeaponsApp();
-                    window.frame.setVisible(true);
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                }
-            }
-        });
-    }
-
     private void initialize() {
         frame.setBounds(800, 250, 800, 800);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
