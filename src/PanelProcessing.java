@@ -10,6 +10,7 @@ public class PanelProcessing {
 
     protected JFrame frame = new JFrame("Player VS Player App");
     protected JPanel splashPanel = new JPanel();
+    JButton gotoPlayer;
     protected JPanel armoryPanel = new JPanel();
     protected ImageIcon[] weaponsArray = new ImageIcon[2];
 
@@ -30,25 +31,33 @@ public class PanelProcessing {
 
         frame.getContentPane().add(splashPanel);
         splashPanel.setLayout(null);
+        fillSplash();
+    }
+
+    public void fillSplash() {
         JLabel weaponImage = new JLabel((String) null);
 //        Icon added to panel after icon added.
         weaponImage.setIcon(new ImageIcon(new ImageIcon(Objects.requireNonNull(PanelProcessing.class.getResource("/images/axe.png"))).getImage().getScaledInstance(500, 500, Image.SCALE_SMOOTH)));
         weaponImage.setBounds(120, -50, 500, 500);
         splashPanel.add(weaponImage);
-        JButton gotoPlayer = new JButton("goto player");
+        gotoPlayer = new JButton("goto player");
         gotoPlayer.setBounds(0, 0, 100, 20);
 
+        addSplashListeners();
+
+//        Button added to panel after listener.
+        splashPanel.add(gotoPlayer);
+    }
+
+    public void addSplashListeners() {
         gotoPlayer.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 loadArmory();
             }
         });
-//        Button added to panel after listener.
-        splashPanel.add(gotoPlayer);
     }
 
     public void loadArmory() {
-
         frame.remove(splashPanel);
         frame.add(armoryPanel);
         frame.repaint();
@@ -56,6 +65,10 @@ public class PanelProcessing {
 
         armoryPanel.setLayout(null);
 
+        fillArmoryPanel();
+    }
+
+    public void fillArmoryPanel() {
         weaponsArray[0] = new ImageIcon(new ImageIcon(Objects.requireNonNull(PanelProcessing.class.getResource("/images/axe.png"))).getImage().getScaledInstance(500, 500, Image.SCALE_SMOOTH));
         weaponsArray[1] = new ImageIcon(new ImageIcon(Objects.requireNonNull(PanelProcessing.class.getResource("/images/sword.png"))).getImage().getScaledInstance(500, 500, Image.SCALE_SMOOTH));
 
@@ -66,7 +79,6 @@ public class PanelProcessing {
 
         JList weaponList = getjList(weaponImage);
         armoryPanel.add(weaponList);
-
     }
 
     private JList getjList(JLabel weaponImage) {
