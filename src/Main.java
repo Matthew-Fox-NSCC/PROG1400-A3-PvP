@@ -5,8 +5,7 @@ public class Main {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    PanelProcessing window = new PanelProcessing();
-                    window.frame.setVisible(true);
+                    Application app = new Application();
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }
