@@ -1,8 +1,11 @@
 public class PlayerCharacter extends GameCharacter {
+    //region Variables
     private String classType;
     private Equipment weapon = new Equipment();
     private Equipment armor = new Equipment();
+    //endregion
 
+    //region Constructors
     public PlayerCharacter(int health_points, int armor_points, int strength_points, int dexterity_points) {
         super(health_points, armor_points, strength_points, dexterity_points);
     }
@@ -14,44 +17,37 @@ public class PlayerCharacter extends GameCharacter {
     public PlayerCharacter() {
         super();
     }
+    //endregion
 
-    /**
-     * Gets the attack value.
-     * @param enemy The enemy to attack
-     * @return The player attack value
-     */
-    public int attack(EnemyCharacter enemy) {
-        // I think the total damage should be character attack - enemy defense.
-        // Strength is base attack and dexterity modifies the hit rate
-        // Points are scaled out of 10
-        // Equipment weapon adds bonus attack damage
-        return this.strength_points + weapon.calc() - enemy.armor_points;
-    }
-
+    //region Getters
     public String getClassType() {
         return classType;
-    }
-
-    public void setClassType(String classType) {
-        this.classType = classType;
     }
 
     public Equipment getWeapon() {
         return weapon;
     }
 
-    public void setWeapon(Equipment weapon) {
-        this.weapon = weapon;
-    }
-
     public Equipment getArmor() {
         return armor;
+    }
+    //endregion
+
+    //region Setters
+    public void setClassType(String classType) {
+        this.classType = classType;
+    }
+
+    public void setWeapon(Equipment weapon) {
+        this.weapon = weapon;
     }
 
     public void setArmor(Equipment armor) {
         this.armor = armor;
     }
+    //endregion
 
+    //region AggregationMethods
     public void equipWeapon(Equipment weapon) {
         this.weapon = weapon;
     }
@@ -59,7 +55,34 @@ public class PlayerCharacter extends GameCharacter {
     public void equipArmor(Equipment armor) {
         this.armor = armor;
     }
+    //endregion
 
+    //region CharacterMethods
+    /**
+     * Gets the attack value.
+     * @return The player attack value
+     */
+    @Override
+    public int attack() {
+        // I think the total damage should be character attack - enemy defense.
+        // Strength is base attack and dexterity modifies the hit rate
+        // Points are scaled out of 10
+        // Equipment weapon adds bonus attack damage
+        return this.strength_points + weapon.calc();
+    }
+
+    @Override
+    public void defend(int damage) {
+        int finalDamage = damage  - this.armor_points - this.getArmor().calc();
+        this.health_points -= finalDamage;
+    }
+
+    @Override
+    public void die() {
+    }
+    //endregion
+
+    //region toString
     @Override
     public String toString() {
         return "class = " + classType + '\n' +
@@ -71,4 +94,5 @@ public class PlayerCharacter extends GameCharacter {
                 "dexterity = " + dexterity_points + '\n' +
                 "imageURL = " + imageURL;
     }
+    //endregion
 }

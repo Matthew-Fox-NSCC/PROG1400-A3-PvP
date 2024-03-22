@@ -85,7 +85,7 @@ public abstract class GameCharacter {
     //region CharacterMethods
     public abstract int attack();
 
-    public abstract int defend();
+    public abstract void defend(int damage);
 
     public abstract void die();
     //endregion

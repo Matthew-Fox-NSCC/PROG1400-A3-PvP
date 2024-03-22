@@ -4,11 +4,14 @@ import java.util.Objects;
 import java.util.Random;
 
 public class Equipment {
+    //region Variables
     private int minimum;
     private int maximum;
     private String name;
     private String imageURL;
+    //endregion
 
+    //region Constructors
     public Equipment(String name, int minimum, int maximum) {
         this.name = name;
         this.minimum = minimum;
@@ -23,37 +26,23 @@ public class Equipment {
     }
 
     public Equipment() {}
+    //endregion
 
+    //region Getters
     public int getMinimum() {
         return minimum;
-    }
-
-    public void setMinimum(int minimum) {
-        this.minimum = minimum;
     }
 
     public int getMaximum() {
         return maximum;
     }
 
-    public void setMaximum(int maximum) {
-        this.maximum = maximum;
-    }
-
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getImageURL() {
         return imageURL;
-    }
-
-    public void setImageURL(String imageURL) {
-        this.imageURL = imageURL;
     }
 
     public ImageIcon getImageIcon() {
@@ -63,16 +52,39 @@ public class Equipment {
     public ImageIcon getImageIcon(int width, int height) {
         return new ImageIcon(new javax.swing.ImageIcon(Objects.requireNonNull(getClass().getResource(imageURL))).getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH));
     }
+    //endregion
 
+    //region Setters
+    public void setMinimum(int minimum) {
+        this.minimum = minimum;
+    }
+
+    public void setMaximum(int maximum) {
+        this.maximum = maximum;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
+    }
+    //endregion
+
+    //region GameMethods
     public int calc() {
         Random random = new Random();
         return random.nextInt(minimum, maximum);
     }
+    //endregion
 
+    //region toString
     @Override
     public String toString() {
         return "Equipment{" +
                 "name='" + name + '\'' +
                 '}';
     }
+    //endregion
 }
