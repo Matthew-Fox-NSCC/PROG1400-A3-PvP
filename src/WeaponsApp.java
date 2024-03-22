@@ -13,7 +13,7 @@ public class WeaponsApp {
     protected JPanel armoryPanel = new JPanel();
     protected ImageIcon[] weaponsArray = new ImageIcon[2];
 
-    protected BusinessClass bc = new BusinessClass();//stub demo of com with BC for demo purpose
+    protected BusinessClass businessClass = new BusinessClass();//stub demo of com with BC for demo purpose
 
     public WeaponsApp() {
         initialize();
@@ -33,7 +33,7 @@ public class WeaponsApp {
     }//end main
 
     private void initialize() {
-        frame.setBounds(100, 100, 450, 300);
+        frame.setBounds(800, 250, 800, 800);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(new CardLayout(0, 0));
         loadSplash();
@@ -43,20 +43,22 @@ public class WeaponsApp {
 
         frame.getContentPane().add(splashPanel);
         splashPanel.setLayout(null);
-        JLabel lblSplash = new JLabel((String) null);
-        lblSplash.setIcon(new ImageIcon(Objects.requireNonNull(WeaponsApp.class.getResource("/images/axe.png"))));
-        lblSplash.setBounds(120, -50, 300, 300);
-        splashPanel.add(lblSplash);
-        JButton btnToPlayer = new JButton("goto player");
-        btnToPlayer.setBounds(0, 0, 100, 20);
+        JLabel weaponImage = new JLabel((String) null);
+//        Icon added to panel after icon added.
+        weaponImage.setIcon(new ImageIcon(new ImageIcon(Objects.requireNonNull(WeaponsApp.class.getResource("/images/axe.png"))).getImage().getScaledInstance(500, 500, Image.SCALE_SMOOTH)));
+        weaponImage.setBounds(120, -50, 500, 500);
+        splashPanel.add(weaponImage);
+        JButton gotoPlayer = new JButton("goto player");
+        gotoPlayer.setBounds(0, 0, 100, 20);
 
-        btnToPlayer.addActionListener(new ActionListener() {    //add an event and take action
+        gotoPlayer.addActionListener(new ActionListener() {    //add an event and take action
             public void actionPerformed(ActionEvent e) {
-                System.out.println(bc.getDex()); //stub demo of com with BC for demo purpose
+                System.out.println(businessClass.getDex()); //stub demo of com with BC for demo purpose
                 loadArmory();
             }
         });
-        splashPanel.add(btnToPlayer);
+//        Button added to panel after listener.
+        splashPanel.add(gotoPlayer);
     }
 
     public void loadArmory() {
@@ -68,18 +70,24 @@ public class WeaponsApp {
 
         armoryPanel.setLayout(null);
 
-        weaponsArray[0] = new ImageIcon(Objects.requireNonNull(WeaponsApp.class.getResource("/images/axe.png")));
-        weaponsArray[1] = new ImageIcon(Objects.requireNonNull(WeaponsApp.class.getResource("/images/sword.png")));
+        weaponsArray[0] = new ImageIcon(new ImageIcon(Objects.requireNonNull(WeaponsApp.class.getResource("/images/axe.png"))).getImage().getScaledInstance(500, 500, Image.SCALE_SMOOTH));
+        weaponsArray[1] = new ImageIcon(new ImageIcon(Objects.requireNonNull(WeaponsApp.class.getResource("/images/sword.png"))).getImage().getScaledInstance(500, 500, Image.SCALE_SMOOTH));
 
-        JLabel lblWeapon = new JLabel((String) null);
-        lblWeapon.setIcon(new ImageIcon(Objects.requireNonNull(WeaponsApp.class.getResource("/images/axe.png"))));
-        lblWeapon.setBounds(176, 70, 100, 108);
-        armoryPanel.add(lblWeapon);
+        JLabel weaponImage = new JLabel((String) null);
+        weaponImage.setIcon(new ImageIcon(Objects.requireNonNull(WeaponsApp.class.getResource("/images/axe.png"))));
+        weaponImage.setBounds(176, 70, 500, 500);
+        armoryPanel.add(weaponImage);
 
+        JList weaponList = getjList(weaponImage);
+        armoryPanel.add(weaponList);
+
+    }//end load armory
+
+    private JList getjList(JLabel weaponImage) {
         JList list = new JList();
         list.addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent e) {
-                lblWeapon.setIcon(weaponsArray[list.getSelectedIndex()]);
+                weaponImage.setIcon(weaponsArray[list.getSelectedIndex()]);
             }
         });
         list.setModel(new AbstractListModel() {
@@ -94,8 +102,7 @@ public class WeaponsApp {
             }
         });
         list.setBounds(77, 70, 89, 115);
-        armoryPanel.add(list);
-
-    }//end load armory
+        return list;
+    }
 
 }//end class
