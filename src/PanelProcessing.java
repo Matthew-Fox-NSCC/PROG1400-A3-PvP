@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Objects;
 
-public class Application {
+public class PanelProcessing {
 
     protected JFrame frame = new JFrame("Player VS Player App");
     protected JPanel splashPanel = new JPanel();
@@ -15,7 +15,7 @@ public class Application {
 
     protected BusinessClass businessClass = new BusinessClass();
 
-    public Application() {
+    public PanelProcessing() {
         initialize();
     }
 
@@ -32,7 +32,7 @@ public class Application {
         splashPanel.setLayout(null);
         JLabel weaponImage = new JLabel((String) null);
 //        Icon added to panel after icon added.
-        weaponImage.setIcon(new ImageIcon(new ImageIcon(Objects.requireNonNull(Application.class.getResource("/images/axe.png"))).getImage().getScaledInstance(500, 500, Image.SCALE_SMOOTH)));
+        weaponImage.setIcon(new ImageIcon(new ImageIcon(Objects.requireNonNull(PanelProcessing.class.getResource("/images/axe.png"))).getImage().getScaledInstance(500, 500, Image.SCALE_SMOOTH)));
         weaponImage.setBounds(120, -50, 500, 500);
         splashPanel.add(weaponImage);
         JButton gotoPlayer = new JButton("goto player");
@@ -56,11 +56,11 @@ public class Application {
 
         armoryPanel.setLayout(null);
 
-        weaponsArray[0] = new ImageIcon(new ImageIcon(Objects.requireNonNull(Application.class.getResource("/images/axe.png"))).getImage().getScaledInstance(500, 500, Image.SCALE_SMOOTH));
-        weaponsArray[1] = new ImageIcon(new ImageIcon(Objects.requireNonNull(Application.class.getResource("/images/sword.png"))).getImage().getScaledInstance(500, 500, Image.SCALE_SMOOTH));
+        weaponsArray[0] = new ImageIcon(new ImageIcon(Objects.requireNonNull(PanelProcessing.class.getResource("/images/axe.png"))).getImage().getScaledInstance(500, 500, Image.SCALE_SMOOTH));
+        weaponsArray[1] = new ImageIcon(new ImageIcon(Objects.requireNonNull(PanelProcessing.class.getResource("/images/sword.png"))).getImage().getScaledInstance(500, 500, Image.SCALE_SMOOTH));
 
         JLabel weaponImage = new JLabel((String) null);
-        weaponImage.setIcon(new ImageIcon(Objects.requireNonNull(Application.class.getResource("/images/axe.png"))));
+        weaponImage.setIcon(new ImageIcon(Objects.requireNonNull(PanelProcessing.class.getResource("/images/axe.png"))));
         weaponImage.setBounds(176, 70, 500, 500);
         armoryPanel.add(weaponImage);
 
