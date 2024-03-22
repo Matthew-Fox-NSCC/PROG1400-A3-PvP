@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import java.util.Objects;
 
 public class PanelProcessing {
-
+    //region Variables
     protected JFrame frame = new JFrame("Player VS Player App");
     protected JPanel splashPanel = new JPanel();
     JButton gotoPlayer;
@@ -17,7 +17,9 @@ public class PanelProcessing {
     protected ImageIcon[] weaponsArray = new ImageIcon[2];
 
     protected BusinessClass businessClass = new BusinessClass();
+    //endregion
 
+    //region PanelStart
     public PanelProcessing() {
         initialize();
     }
@@ -28,13 +30,39 @@ public class PanelProcessing {
         frame.getContentPane().setLayout(new CardLayout(0, 0));
         loadSplash();
     }
+    //endregion
 
+    //region PanelLoading
     public void loadSplash() {
         frame.getContentPane().add(splashPanel);
         splashPanel.setLayout(null);
         fillSplash();
     }
 
+    public void loadArmory() {
+        frame.remove(splashPanel);
+        frame.add(armoryPanel);
+        frame.repaint();
+        frame.validate();
+
+        armoryPanel.setLayout(null);
+
+        fillArmoryPanel();
+    }
+
+    public void loadBattle() {
+        frame.remove(armoryPanel);
+        frame.add(battlePanel);
+        frame.repaint();
+        frame.validate();
+
+        armoryPanel.setLayout(null);
+
+        fillBattlePanel();
+    }
+    //endregion
+
+    //region PanelFilling
     public void fillSplash() {
         JLabel weaponImage = new JLabel((String) null);
 //        Icon added to panel after icon added.
@@ -48,25 +76,6 @@ public class PanelProcessing {
 
 //        Button added to panel after listener.
         splashPanel.add(gotoPlayer);
-    }
-
-    public void addSplashListeners() {
-        gotoPlayer.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                loadArmory();
-            }
-        });
-    }
-
-    public void loadArmory() {
-        frame.remove(splashPanel);
-        frame.add(armoryPanel);
-        frame.repaint();
-        frame.validate();
-
-        armoryPanel.setLayout(null);
-
-        fillArmoryPanel();
     }
 
     public void fillArmoryPanel() {
@@ -88,6 +97,19 @@ public class PanelProcessing {
         armoryPanel.add(weaponList);
     }
 
+    public void fillBattlePanel() {
+    }
+    //endregion
+
+    //region AddListeners
+    public void addSplashListeners() {
+        gotoPlayer.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                loadArmory();
+            }
+        });
+    }
+
     public void addArmoryListeners() {
         gotoBattle.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -95,21 +117,9 @@ public class PanelProcessing {
             }
         });
     }
+    //endregion
 
-    public void loadBattle() {
-        frame.remove(armoryPanel);
-        frame.add(battlePanel);
-        frame.repaint();
-        frame.validate();
-
-        armoryPanel.setLayout(null);
-
-        fillBattlePanel();
-    }
-
-    public void fillBattlePanel() {
-    }
-
+    //region CustomElements
     private JList getjList(JLabel weaponImage) {
         JList list = new JList();
         list.addListSelectionListener(new ListSelectionListener() {
@@ -131,5 +141,5 @@ public class PanelProcessing {
         list.setBounds(77, 70, 89, 115);
         return list;
     }
-
+    //endregion
 }
