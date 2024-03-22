@@ -11,7 +11,9 @@ public class PanelProcessing {
     protected JFrame frame = new JFrame("Player VS Player App");
     protected JPanel splashPanel = new JPanel();
     JButton gotoPlayer;
+    JButton gotoBattle;
     protected JPanel armoryPanel = new JPanel();
+    protected JPanel battlePanel = new JPanel();
     protected ImageIcon[] weaponsArray = new ImageIcon[2];
 
     protected BusinessClass businessClass = new BusinessClass();
@@ -28,7 +30,6 @@ public class PanelProcessing {
     }
 
     public void loadSplash() {
-
         frame.getContentPane().add(splashPanel);
         splashPanel.setLayout(null);
         fillSplash();
@@ -76,9 +77,37 @@ public class PanelProcessing {
         weaponImage.setIcon(new ImageIcon(Objects.requireNonNull(PanelProcessing.class.getResource("/images/axe.png"))));
         weaponImage.setBounds(176, 70, 500, 500);
         armoryPanel.add(weaponImage);
+        gotoBattle = new JButton("goto battle");
+        gotoBattle.setBounds(0, 0, 100, 20);
+
+        addArmoryListeners();
+
+        armoryPanel.add(gotoBattle);
 
         JList weaponList = getjList(weaponImage);
         armoryPanel.add(weaponList);
+    }
+
+    public void addArmoryListeners() {
+        gotoBattle.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                loadBattle();
+            }
+        });
+    }
+
+    public void loadBattle() {
+        frame.remove(armoryPanel);
+        frame.add(battlePanel);
+        frame.repaint();
+        frame.validate();
+
+        armoryPanel.setLayout(null);
+
+        fillBattlePanel();
+    }
+
+    public void fillBattlePanel() {
     }
 
     private JList getjList(JLabel weaponImage) {
