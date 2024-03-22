@@ -65,6 +65,8 @@ public class PanelProcessing {
 
 //        ImageIcon x = new ImageIcon(PanelProcessing.class.getResource("images2/axe.png"));
 
+        battlePage.enemyPicture.setIcon(new javax.swing.ImageIcon("pictures/enemies/aboleth.png"));
+
         frame.repaint();
         frame.validate();
     }
