@@ -8,10 +8,12 @@ import java.util.Objects;
 
 public class PanelProcessing {
     //region Variables
+    protected final int DEFAULT_WIDTH = 500;
+    protected final int DEFAULT_HEIGHT = 500;
     protected JFrame frame = new JFrame("Player VS Player App");
     protected JPanel splashPanel = new JPanel();
-    JButton gotoPlayer;
-    JButton gotoBattle;
+    protected JButton gotoPlayer;
+    protected JButton gotoBattle;
     protected JPanel armoryPanel = new JPanel();
     protected JPanel battlePanel = new JPanel();
     protected ImageIcon[] weaponsArray = new ImageIcon[2];
@@ -66,8 +68,8 @@ public class PanelProcessing {
     public void fillSplash() {
         JLabel weaponImage = new JLabel((String) null);
 //        Icon added to panel after icon added.
-        weaponImage.setIcon(new ImageIcon(new ImageIcon(Objects.requireNonNull(PanelProcessing.class.getResource("/images/axe.png"))).getImage().getScaledInstance(500, 500, Image.SCALE_SMOOTH)));
-        weaponImage.setBounds(120, -50, 500, 500);
+        weaponImage.setIcon(new ImageIcon(new ImageIcon(Objects.requireNonNull(PanelProcessing.class.getResource("/images/axe.png"))).getImage().getScaledInstance(DEFAULT_WIDTH, DEFAULT_HEIGHT, Image.SCALE_SMOOTH)));
+        weaponImage.setBounds(120, -50, DEFAULT_WIDTH, DEFAULT_HEIGHT);
         splashPanel.add(weaponImage);
         gotoPlayer = new JButton("goto player");
         gotoPlayer.setBounds(0, 0, 100, 20);
@@ -79,12 +81,12 @@ public class PanelProcessing {
     }
 
     public void fillArmoryPanel() {
-        weaponsArray[0] = new ImageIcon(new ImageIcon(Objects.requireNonNull(PanelProcessing.class.getResource("/images/axe.png"))).getImage().getScaledInstance(500, 500, Image.SCALE_SMOOTH));
-        weaponsArray[1] = new ImageIcon(new ImageIcon(Objects.requireNonNull(PanelProcessing.class.getResource("/images/sword.png"))).getImage().getScaledInstance(500, 500, Image.SCALE_SMOOTH));
+        weaponsArray[0] = new ImageIcon(new ImageIcon(Objects.requireNonNull(PanelProcessing.class.getResource("/images/axe.png"))).getImage().getScaledInstance(DEFAULT_WIDTH, DEFAULT_HEIGHT, Image.SCALE_SMOOTH));
+        weaponsArray[1] = new ImageIcon(new ImageIcon(Objects.requireNonNull(PanelProcessing.class.getResource("/images/sword.png"))).getImage().getScaledInstance(DEFAULT_WIDTH, DEFAULT_HEIGHT, Image.SCALE_SMOOTH));
 
         JLabel weaponImage = new JLabel((String) null);
-        weaponImage.setIcon(new ImageIcon(Objects.requireNonNull(PanelProcessing.class.getResource("/images/axe.png"))));
-        weaponImage.setBounds(176, 70, 500, 500);
+        weaponImage.setIcon(weaponsArray[0]);
+        weaponImage.setBounds(176, 70, DEFAULT_WIDTH, DEFAULT_HEIGHT);
         armoryPanel.add(weaponImage);
         gotoBattle = new JButton("goto battle");
         gotoBattle.setBounds(0, 0, 100, 20);
@@ -98,6 +100,10 @@ public class PanelProcessing {
     }
 
     public void fillBattlePanel() {
+        JLabel playerImage = new JLabel((String) null);
+        playerImage.setIcon(new ImageIcon(new ImageIcon(Objects.requireNonNull(PanelProcessing.class.getResource("images/wizard.png"))).getImage().getScaledInstance(DEFAULT_WIDTH, DEFAULT_HEIGHT, Image.SCALE_SMOOTH)));
+        playerImage.setBounds(40, 40, DEFAULT_WIDTH, DEFAULT_HEIGHT);
+        battlePanel.add(playerImage);
     }
     //endregion
 
