@@ -1,7 +1,10 @@
 import javax.swing.*;
-import javax.swing.event.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Objects;
 
 public class WeaponsApp {
 
@@ -12,6 +15,10 @@ public class WeaponsApp {
 
     protected BusinessClass bc = new BusinessClass();//stub demo of com with BC for demo purpose
 
+    public WeaponsApp() {
+        initialize();
+    }
+
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -19,56 +26,53 @@ public class WeaponsApp {
                     WeaponsApp window = new WeaponsApp();
                     window.frame.setVisible(true);
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    System.out.println(e.getMessage());
                 }
             }
         });
     }//end main
 
-    public WeaponsApp() {
-        initialize();
-    }
+    private void initialize() {
+        frame.setBounds(100, 100, 450, 300);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.getContentPane().setLayout(new CardLayout(0, 0));
+        loadSplash();
+    }// end initialize
 
-      private void initialize() {
-          frame.setBounds(100, 100, 450, 300);
-          frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-          frame.getContentPane().setLayout(new CardLayout(0, 0));
-          loadSplash();
-      }// end initialize
-
-    public void loadSplash(){
+    public void loadSplash() {
 
         frame.getContentPane().add(splashPanel);
         splashPanel.setLayout(null);
         JLabel lblSplash = new JLabel((String) null);
-        lblSplash.setIcon(new ImageIcon(WeaponsApp.class.getResource("/images/axe.png")));
+        lblSplash.setIcon(new ImageIcon(Objects.requireNonNull(WeaponsApp.class.getResource("/images/axe.png"))));
         lblSplash.setBounds(120, -50, 300, 300);
         splashPanel.add(lblSplash);
         JButton btnToPlayer = new JButton("goto player");
-        btnToPlayer.setBounds(0,0,100,20);
+        btnToPlayer.setBounds(0, 0, 100, 20);
 
-        btnToPlayer.addActionListener(new ActionListener(){    //add an event and take action
-            public void actionPerformed(ActionEvent e){
+        btnToPlayer.addActionListener(new ActionListener() {    //add an event and take action
+            public void actionPerformed(ActionEvent e) {
                 System.out.println(bc.getDex()); //stub demo of com with BC for demo purpose
                 loadArmory();
             }
         });
         splashPanel.add(btnToPlayer);
     }
-    public void loadArmory(){
+
+    public void loadArmory() {
 
         frame.remove(splashPanel);
         frame.add(armoryPanel);
         frame.repaint();
         frame.validate();
 
-        armoryPanel .setLayout(null);
+        armoryPanel.setLayout(null);
 
-        weaponsArray[0]= new ImageIcon(WeaponsApp.class.getResource("/images/axe.png"));
-        weaponsArray[1]= new ImageIcon(WeaponsApp.class.getResource("/images/sword.png"));
+        weaponsArray[0] = new ImageIcon(Objects.requireNonNull(WeaponsApp.class.getResource("/images/axe.png")));
+        weaponsArray[1] = new ImageIcon(Objects.requireNonNull(WeaponsApp.class.getResource("/images/sword.png")));
 
         JLabel lblWeapon = new JLabel((String) null);
-        lblWeapon.setIcon(new ImageIcon(WeaponsApp.class.getResource("/images/axe.png")));
+        lblWeapon.setIcon(new ImageIcon(Objects.requireNonNull(WeaponsApp.class.getResource("/images/axe.png"))));
         lblWeapon.setBounds(176, 70, 100, 108);
         armoryPanel.add(lblWeapon);
 
@@ -79,10 +83,12 @@ public class WeaponsApp {
             }
         });
         list.setModel(new AbstractListModel() {
-            String[] values = new String[] {"Axe", "Sword"};
+            final String[] values = new String[]{"Axe", "Sword"};
+
             public int getSize() {
                 return values.length;
             }
+
             public Object getElementAt(int index) {
                 return values[index];
             }
