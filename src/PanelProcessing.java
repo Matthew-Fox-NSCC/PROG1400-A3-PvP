@@ -17,8 +17,6 @@ public class PanelProcessing {
     protected JPanel armoryPanel = new JPanel();
     protected JPanel battlePanel = new JPanel();
     protected ImageIcon[] weaponsArray = new ImageIcon[2];
-
-    protected BusinessClass businessClass = new BusinessClass();
     //endregion
 
     //region PanelStart
