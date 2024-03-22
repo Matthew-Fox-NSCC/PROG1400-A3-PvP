@@ -5,7 +5,7 @@ public class Main {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    WeaponsApp window = new WeaponsApp();
+                    Application window = new Application();
                     window.frame.setVisible(true);
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
