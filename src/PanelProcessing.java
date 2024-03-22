@@ -35,7 +35,7 @@ public class PanelProcessing {
     //region PanelLoading
     public void loadSplash() {
         frame.getContentPane().add(splashPanel);
-        splashPanel.setLayout(null);
+        splashPanel.setLayout(new BorderLayout());
         fillSplash();
     }
 
@@ -64,18 +64,47 @@ public class PanelProcessing {
 
     //region PanelFilling
     public void fillSplash() {
-        JLabel weaponImage = new JLabel((String) null);
-//        Icon added to panel after icon added.
-        weaponImage.setIcon(new ImageIcon(new ImageIcon(Objects.requireNonNull(PanelProcessing.class.getResource("/images/axe.png"))).getImage().getScaledInstance(DEFAULT_WIDTH, DEFAULT_HEIGHT, Image.SCALE_SMOOTH)));
-        weaponImage.setBounds(120, -50, DEFAULT_WIDTH, DEFAULT_HEIGHT);
-        splashPanel.add(weaponImage);
-        gotoPlayer = new JButton("goto player");
-        gotoPlayer.setBounds(0, 0, 100, 20);
+        // The Splash title label.
+        JLabel title = new JLabel("The Great Underground Empire");
+        title.setFont(new Font("Arial", Font.BOLD, 20));
+        title.setHorizontalAlignment(SwingConstants.CENTER);
+        title.setVerticalAlignment(SwingConstants.CENTER);
 
-        addSplashListeners();
+        // Instructions text area.
+        JTextArea instructions = new JTextArea();
+        instructions.setText("Game Instructions:\n- Instruction 1\n- Instruction 2\n- Instruction 3");
+        instructions.setFont(new Font("Arial", Font.PLAIN, 18));
+        instructions.setAlignmentX(Component.CENTER_ALIGNMENT);
+        instructions.setAlignmentY(Component.CENTER_ALIGNMENT);
+        instructions.setEditable(false);
+        instructions.setLineWrap(true);
+        instructions.setWrapStyleWord(true);
 
-//        Button added to panel after listener.
-        splashPanel.add(gotoPlayer);
+        // Panel for instruction area.
+        JPanel instructionPanel = new JPanel();
+        instructionPanel.setLayout(new BoxLayout(instructionPanel, BoxLayout.Y_AXIS));
+        instructionPanel.add(Box.createVerticalGlue());
+        instructionPanel.add(instructions);
+        instructionPanel.add(Box.createVerticalGlue());
+        instructionPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        instructionPanel.setAlignmentY(Component.CENTER_ALIGNMENT);
+
+        // Continue button.
+        JButton gotoPlayer = new JButton("Go to Player");
+
+        gotoPlayer.addActionListener(e -> loadArmory());
+
+        gotoPlayer.setMinimumSize(new Dimension(150, 50));
+        gotoPlayer.setPreferredSize(new Dimension(150, 50));
+
+        // Panel for button.
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        buttonPanel.add(gotoPlayer);
+
+        // Adding elements.
+        splashPanel.add(title, BorderLayout.NORTH);
+        splashPanel.add(instructionPanel, BorderLayout.CENTER);
+        splashPanel.add(buttonPanel, BorderLayout.SOUTH);
     }
 
     public void fillArmoryPanel() {
@@ -89,7 +118,7 @@ public class PanelProcessing {
         gotoBattle = new JButton("goto battle");
         gotoBattle.setBounds(0, 0, 100, 20);
 
-        addArmoryListeners();
+        gotoBattle.addActionListener(e -> loadBattle());
 
         armoryPanel.add(gotoBattle);
 
@@ -102,24 +131,6 @@ public class PanelProcessing {
         playerImage.setIcon(new ImageIcon(new ImageIcon(Objects.requireNonNull(PanelProcessing.class.getResource("images/wizard.png"))).getImage().getScaledInstance(DEFAULT_WIDTH, DEFAULT_HEIGHT, Image.SCALE_SMOOTH)));
         playerImage.setBounds(40, 40, DEFAULT_WIDTH, DEFAULT_HEIGHT);
         battlePanel.add(playerImage);
-    }
-    //endregion
-
-    //region AddListeners
-    public void addSplashListeners() {
-        gotoPlayer.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                loadArmory();
-            }
-        });
-    }
-
-    public void addArmoryListeners() {
-        gotoBattle.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                loadBattle();
-            }
-        });
     }
     //endregion
 
