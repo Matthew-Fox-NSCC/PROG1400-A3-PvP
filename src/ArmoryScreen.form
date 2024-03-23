@@ -77,7 +77,16 @@
                 </constraints>
                 <properties/>
                 <border type="none"/>
-                <children/>
+                <children>
+                  <component id="e64be" class="javax.swing.JLabel" binding="playerPicture">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Label"/>
+                    </properties>
+                  </component>
+                </children>
               </grid>
             </children>
           </grid>
@@ -107,11 +116,7 @@
                   </grid>
                 </constraints>
                 <properties>
-                  <model>
-                    <item value="Item 1"/>
-                    <item value="Item 2"/>
-                    <item value="Item 3"/>
-                  </model>
+                  <model/>
                 </properties>
               </component>
               <grid id="4ac17" binding="weaponImagePanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
@@ -121,7 +126,16 @@
                 </constraints>
                 <properties/>
                 <border type="none"/>
-                <children/>
+                <children>
+                  <component id="30274" class="javax.swing.JLabel" binding="weaponPicture">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="Label"/>
+                    </properties>
+                  </component>
+                </children>
               </grid>
               <vspacer id="38a24">
                 <constraints>

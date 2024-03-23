@@ -11,6 +11,7 @@ public class PanelProcessingOld {
     protected JButton gotoPlayer;
     protected JButton gotoBattle;
     protected JPanel armoryPanel = new JPanel();
+    protected ArmoryScreen armoryScreen = new ArmoryScreen();
     protected JPanel battlePanel = new JPanel();
     protected ImageIcon[] weaponsArray = new ImageIcon[2];
     //endregion
@@ -21,7 +22,7 @@ public class PanelProcessingOld {
     }
 
     private void initialize() {
-        frame.setBounds(800, 250, 800, 800);
+        frame.setBounds(800, 250, 1000, 800);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(new CardLayout(0, 0));
         loadSplash();
@@ -38,20 +39,21 @@ public class PanelProcessingOld {
 
     public void loadArmory() {
         frame.remove(splashPanel);
-        frame.add(armoryPanel);
+        frame.add(armoryScreen.panel);
+        addArmoryListeners();
         frame.repaint();
         frame.validate();
 //        frame.getContentPane().remove(splashPanel);
 //        frame.getContentPane().add(armoryPanel);
 
-        armoryPanel.setLayout(new BorderLayout());
-        armoryPanel.setName("Armory");
+        armoryScreen.panel.setLayout(new BorderLayout());
+        armoryScreen.panel.setName("Armory");
 
         fillArmory();
     }
 
     public void loadBattle() {
-        frame.remove(armoryPanel);
+        frame.remove(armoryScreen.panel);
         frame.add(battlePanel);
         frame.repaint();
         frame.validate();
@@ -95,29 +97,52 @@ public class PanelProcessingOld {
     }
 
     public void fillSplash() {
-//        // Instructions text area.
-//        JTextArea instructions = new JTextArea();
-//        instructions.setText("Game Instructions:\n- Instruction 1\n- Instruction 2\n- Instruction 3");
-//        instructions.setFont(new Font("Arial", Font.PLAIN, 18));
-//        instructions.setAlignmentX(Component.CENTER_ALIGNMENT);
-//        instructions.setAlignmentY(Component.CENTER_ALIGNMENT);
-//        instructions.setEditable(false);
-//        instructions.setLineWrap(true);
-//        instructions.setWrapStyleWord(true);
-//
-//        // Panel for instruction area.
-//        JPanel instructionPanel = new JPanel();
-//        instructionPanel.setLayout(new BoxLayout(instructionPanel, BoxLayout.Y_AXIS));
-//        instructionPanel.add(Box.createVerticalGlue());
-//        instructionPanel.add(instructions);
-//        instructionPanel.add(Box.createVerticalGlue());
-//        instructionPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
-//        instructionPanel.setAlignmentY(Component.CENTER_ALIGNMENT);
-//
-//        // Adding elements.
-//        splashPanel.add(instructionPanel, BorderLayout.CENTER);
+        // Instructions text area.
+        JTextArea instructions = new JTextArea();
+        instructions.setText("Game Instructions:\n- Instruction 1\n- Instruction 2\n- Instruction 3");
+        instructions.setFont(new Font("Arial", Font.PLAIN, 18));
+        instructions.setAlignmentX(Component.CENTER_ALIGNMENT);
+        instructions.setAlignmentY(Component.CENTER_ALIGNMENT);
+        instructions.setEditable(false);
+        instructions.setLineWrap(true);
+        instructions.setWrapStyleWord(true);
+
+        // Panel for instruction area.
+        JPanel instructionPanel = new JPanel();
+        instructionPanel.setLayout(new BoxLayout(instructionPanel, BoxLayout.Y_AXIS));
+        instructionPanel.add(Box.createVerticalGlue());
+        instructionPanel.add(instructions);
+        instructionPanel.add(Box.createVerticalGlue());
+        instructionPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        instructionPanel.setAlignmentY(Component.CENTER_ALIGNMENT);
+
+        // Adding elements.
+        splashPanel.add(instructionPanel, BorderLayout.CENTER);
 
         fillTitleAndContinue(splashPanel, "The Great Underground Empire");
+    }
+
+    public void addArmoryListeners() {
+        armoryScreen.OKButton.addActionListener(e -> loadBattle());
+
+        armoryScreen.classSelectionList.getSelectionModel().addListSelectionListener(e -> {
+            ActiveEntities.player.setClassType(armoryScreen.classSelectionList.getSelectedValue().toString());
+            switch (ActiveEntities.player.getClassType()) {
+                case "Wizard":
+                    ActiveEntities.player.setImageURL("pictures/players/wizard.png");
+//                    armoryScreen.weaponStatList.
+                    break;
+                case "Knight":
+                    ActiveEntities.player.setImageURL("pictures/players/knight.jpg");
+                    break;
+            }
+            fillArmoryPanel();
+        });
+    }
+
+    public void fillArmoryPanel() {
+        armoryScreen.playerInformation.setLineWrap(true);
+        armoryScreen.playerInformation.setText(ActiveEntities.player.toString());
     }
 
     public void fillArmory() {
@@ -194,9 +219,19 @@ public class PanelProcessingOld {
         //endregion
 
         //region DavidsCode
-//        weaponsArray[0] = new ImageIcon(new ImageIcon(Objects.requireNonNull(PanelProcessing.class.getResource("/images/axe.png"))).getImage().getScaledInstance(DEFAULT_WIDTH, DEFAULT_HEIGHT, Image.SCALE_SMOOTH));
-//        weaponsArray[1] = new ImageIcon(new ImageIcon(Objects.requireNonNull(PanelProcessing.class.getResource("/images/sword.png"))).getImage().getScaledInstance(DEFAULT_WIDTH, DEFAULT_HEIGHT, Image.SCALE_SMOOTH));
-//
+        weaponsArray[0] = new ImageIcon(
+                new ImageIcon(
+                        Objects.requireNonNull(
+                                PanelProcessing.class.getResource("/images/axe.png"))).getImage()
+                        .getScaledInstance(200, 200, Image.SCALE_SMOOTH)
+        );
+        weaponsArray[1] = new ImageIcon(
+                new ImageIcon(
+                        Objects.requireNonNull(
+                                PanelProcessing.class.getResource("/images/sword.png"))).getImage()
+                        .getScaledInstance(200, 200, Image.SCALE_SMOOTH)
+        );
+
 //        JLabel weaponImage = new JLabel((String) null);
 //        weaponImage.setIcon(weaponsArray[0]);
 //        weaponImage.setBounds(176, 70, DEFAULT_WIDTH, DEFAULT_HEIGHT);
@@ -213,7 +248,9 @@ public class PanelProcessingOld {
 //        armoryPanel.add(weaponList);
         //endregion
 
-        fillTitleAndContinue(armoryPanel, "Armory");
+//        fillTitleAndContinue(armoryPanel, "Armory");
+
+        armoryScreen.weaponPicture.setIcon(weaponsArray[0]);
     }
 
     public void fillBattlePanel() {

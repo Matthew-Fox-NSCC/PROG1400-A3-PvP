@@ -60,11 +60,13 @@ public class PanelProcessing {
         weaponsArray[0] = new ImageIcon(new ImageIcon(Objects.requireNonNull(PanelProcessing.class.getResource("/images/axe.png"))).getImage().getScaledInstance(DEFAULT_WIDTH, DEFAULT_HEIGHT, Image.SCALE_SMOOTH));
         weaponsArray[1] = new ImageIcon(new ImageIcon(Objects.requireNonNull(PanelProcessing.class.getResource("/images/sword.png"))).getImage().getScaledInstance(DEFAULT_WIDTH, DEFAULT_HEIGHT, Image.SCALE_SMOOTH));
 
-        JLabel weaponImage = new JLabel((String) null);
-        weaponImage.setIcon(weaponsArray[0]);
+        armoryScreen.weaponPicture.setIcon(weaponsArray[0]);
 
-        armoryScreen.weaponImagePanel.setLayout(new FlowLayout());
-        armoryScreen.weaponImagePanel.add(weaponImage);
+//        JLabel weaponImage = new JLabel((String) null);
+//        weaponImage.setIcon(weaponsArray[0]);
+
+//        armoryScreen.weaponImagePanel.setLayout(new FlowLayout());
+//        armoryScreen.weaponImagePanel.add(weaponImage, BorderLayout.CENTER);
     }
 
     public void loadBattle() {

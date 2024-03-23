@@ -3,7 +3,7 @@ import javax.swing.*;
 public class ArmoryScreen {
     public JPanel panel;
     public JList classSelectionList;
-    private JList weaponStatList;
+    public JList weaponStatList;
     public JButton OKButton;
     public JList playerStatList;
     private JButton rollButton;
@@ -15,4 +15,6 @@ public class ArmoryScreen {
     private JPanel rightPanel;
     private JPanel centerPanel;
     public JPanel weaponImagePanel;
+    public JLabel weaponPicture;
+    private JLabel playerPicture;
 }
