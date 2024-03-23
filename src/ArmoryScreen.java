@@ -1,6 +1,6 @@
 import javax.swing.*;
 
-public class PlayerArmorySelection {
+public class ArmoryScreen {
     public JPanel panel;
     public JList classSelectionList;
     private JList weaponStatList;
@@ -10,4 +10,9 @@ public class PlayerArmorySelection {
     private JButton rightButton;
     private JButton leftButton;
     public JTextArea playerInformation;
+    private JPanel innerPanel;
+    private JPanel leftPanel;
+    private JPanel rightPanel;
+    private JPanel centerPanel;
+    public JPanel weaponImagePanel;
 }
