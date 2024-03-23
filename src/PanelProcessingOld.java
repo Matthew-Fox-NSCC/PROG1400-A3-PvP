@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.Objects;
 
-public class PanelProcessing {
+public class PanelProcessingOld {
     //region Variables
     protected final int DEFAULT_WIDTH = 500;
     protected final int DEFAULT_HEIGHT = 500;
@@ -16,7 +16,7 @@ public class PanelProcessing {
     //endregion
 
     //region PanelStart
-    public PanelProcessing() {
+    public PanelProcessingOld() {
         initialize();
     }
 
@@ -218,7 +218,7 @@ public class PanelProcessing {
 
     public void fillBattlePanel() {
         JLabel playerImage = new JLabel((String) null);
-        playerImage.setIcon(new ImageIcon(new ImageIcon(Objects.requireNonNull(PanelProcessing.class.getResource("images/wizard.png"))).getImage().getScaledInstance(DEFAULT_WIDTH, DEFAULT_HEIGHT, Image.SCALE_SMOOTH)));
+        playerImage.setIcon(new ImageIcon(new ImageIcon(Objects.requireNonNull(PanelProcessingOld.class.getResource("images/wizard.png"))).getImage().getScaledInstance(DEFAULT_WIDTH, DEFAULT_HEIGHT, Image.SCALE_SMOOTH)));
         playerImage.setBounds(40, 40, DEFAULT_WIDTH, DEFAULT_HEIGHT);
         battlePanel.add(playerImage);
     }

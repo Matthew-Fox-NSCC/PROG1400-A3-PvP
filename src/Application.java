@@ -1,6 +1,6 @@
 public class Application {
     public Application() {
-        PanelProcessing window = new PanelProcessing();
+        PanelProcessingOld window = new PanelProcessingOld();
         window.frame.setVisible(true);
     }
 }
