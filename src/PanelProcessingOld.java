@@ -43,8 +43,6 @@ public class PanelProcessingOld {
         addArmoryListeners();
         frame.repaint();
         frame.validate();
-//        frame.getContentPane().remove(splashPanel);
-//        frame.getContentPane().add(armoryPanel);
 
         armoryScreen.panel.setLayout(new BorderLayout());
         armoryScreen.panel.setName("Armory");
@@ -130,7 +128,6 @@ public class PanelProcessingOld {
             switch (ActiveEntities.player.getClassType()) {
                 case "Wizard":
                     ActiveEntities.player.setImageURL("pictures/players/wizard.png");
-//                    armoryScreen.weaponStatList.
                     break;
                 case "Knight":
                     ActiveEntities.player.setImageURL("pictures/players/knight.jpg");
@@ -146,79 +143,6 @@ public class PanelProcessingOld {
     }
 
     public void fillArmory() {
-        //region GPTCode
-//        // The Armory title label.
-//        JLabel title = new JLabel("Armory");
-//        title.setFont(new Font("Arial", Font.BOLD, 20));
-//        title.setHorizontalAlignment(SwingConstants.CENTER);
-//        title.setVerticalAlignment(SwingConstants.CENTER);
-//
-//        armoryPanel.add(title, BorderLayout.NORTH);
-//
-//        // Character class selection list.
-//        String[] characterClasses = {"Warrior", "Wizard"};
-//        JComboBox<String> classList = new JComboBox<>(characterClasses);
-//
-//        // Character stats text area.
-//        JTextArea characterStatsArea = new JTextArea();
-//        characterStatsArea.setEditable(false);
-//
-//        // Weapon selection list.
-//        String[] weapons = {"Sword", "Staff"};
-//        JList<String> weaponList = new JList<>(weapons);
-//
-//        // Weapon stats text area.
-//        JTextArea weaponStatsArea = new JTextArea();
-//        weaponStatsArea.setEditable(false);
-//
-//        // Weapon image.
-//        ImageIcon weaponImage = new ImageIcon(new ImageIcon(Objects.requireNonNull(PanelProcessing.class.getResource("/images/sword.png"))).getImage().getScaledInstance(DEFAULT_WIDTH, DEFAULT_HEIGHT, Image.SCALE_SMOOTH));
-//        JLabel weaponImageLabel = new JLabel(weaponImage);
-//        weaponImageLabel.setHorizontalAlignment(SwingConstants.CENTER);
-//
-//        // Buttons
-//        JButton leftArrowButton = new JButton("←");
-//        JButton rightArrowButton = new JButton("→");
-//        JButton rollButton = new JButton("Roll");
-//        JTextArea statsTextArea = new JTextArea();
-//        statsTextArea.setEditable(false);
-//
-//        // Continue Button
-//        JButton continueButton = new JButton("Continue");
-//
-//        continueButton.addActionListener(e -> loadBattle());
-//
-//        continueButton.setMinimumSize(new Dimension(150, 50));
-//        continueButton.setPreferredSize(new Dimension(150, 50));
-
-        // Layout information.
-//        JPanel topPanel = new JPanel(new BorderLayout());
-//        topPanel.add(title, BorderLayout.CENTER);
-//        armoryPanel.add(topPanel, BorderLayout.NORTH);
-//        armoryPanel.add(title, BorderLayout.NORTH);
-
-//        JPanel centerPanel = new JPanel(new BorderLayout());
-//        JPanel characterPanel = new JPanel(new BorderLayout());
-//        characterPanel.add(new JScrollPane(characterStatsArea), BorderLayout.CENTER);
-//        centerPanel.add(characterPanel, BorderLayout.WEST);
-//        centerPanel.add(classList, BorderLayout.CENTER);
-//        JPanel weaponPanel = new JPanel(new BorderLayout());
-//        weaponPanel.add(new JScrollPane(weaponStatsArea), BorderLayout.CENTER);
-//        weaponPanel.add(weaponImageLabel, BorderLayout.SOUTH);
-//        centerPanel.add(weaponPanel, BorderLayout.EAST);
-//        armoryPanel.add(centerPanel, BorderLayout.CENTER);
-//
-//        JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-//        bottomPanel.add(leftArrowButton);
-//        bottomPanel.add(rollButton);
-//        bottomPanel.add(rightArrowButton);
-//        bottomPanel.add(new JScrollPane(statsTextArea));
-//        armoryPanel.add(bottomPanel, BorderLayout.SOUTH);
-//
-//        armoryPanel.add(continueButton, BorderLayout.SOUTH);
-        //endregion
-
-        //region DavidsCode
         weaponsArray[0] = new ImageIcon(
                 new ImageIcon(
                         Objects.requireNonNull(
@@ -232,30 +156,17 @@ public class PanelProcessingOld {
                         .getScaledInstance(200, 200, Image.SCALE_SMOOTH)
         );
 
-//        JLabel weaponImage = new JLabel((String) null);
-//        weaponImage.setIcon(weaponsArray[0]);
-//        weaponImage.setBounds(176, 70, DEFAULT_WIDTH, DEFAULT_HEIGHT);
-//        gotoBattle = new JButton("goto battle");
-//        gotoBattle.setBounds(0, 0, 100, 20);
-//
-//        gotoBattle.addActionListener(e -> loadBattle());
-//
-//
-//        armoryPanel.add(weaponImage);
-//        armoryPanel.add(gotoBattle, BorderLayout.NORTH);
-//
-//        JList weaponList = getjList(weaponImage);
-//        armoryPanel.add(weaponList);
-        //endregion
-
-//        fillTitleAndContinue(armoryPanel, "Armory");
-
         armoryScreen.weaponPicture.setIcon(weaponsArray[0]);
     }
 
     public void fillBattlePanel() {
         JLabel playerImage = new JLabel((String) null);
-        playerImage.setIcon(new ImageIcon(new ImageIcon(Objects.requireNonNull(PanelProcessingOld.class.getResource("images/wizard.png"))).getImage().getScaledInstance(DEFAULT_WIDTH, DEFAULT_HEIGHT, Image.SCALE_SMOOTH)));
+        playerImage.setIcon(new ImageIcon(
+                new ImageIcon(
+                        Objects.requireNonNull(
+                                PanelProcessingOld.class.getResource("images/wizard.png"))).getImage()
+                        .getScaledInstance(DEFAULT_WIDTH, DEFAULT_HEIGHT, Image.SCALE_SMOOTH)
+        ));
         playerImage.setBounds(40, 40, DEFAULT_WIDTH, DEFAULT_HEIGHT);
         battlePanel.add(playerImage);
     }
