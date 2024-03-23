@@ -36,6 +36,7 @@ public class PanelProcessing {
     public void loadSplash() {
         frame.getContentPane().add(splashPanel);
         splashPanel.setLayout(new BorderLayout());
+        splashPanel.setName("Splash");
         fillSplash();
     }
 
@@ -45,7 +46,8 @@ public class PanelProcessing {
         frame.repaint();
         frame.validate();
 
-        armoryPanel.setLayout(null);
+        armoryPanel.setLayout(new BorderLayout());
+        armoryPanel.setName("Armory");
 
         fillArmoryPanel();
     }
@@ -56,6 +58,8 @@ public class PanelProcessing {
         frame.repaint();
         frame.validate();
 
+        battlePanel.setName("Battle");
+
         armoryPanel.setLayout(null);
 
         fillBattlePanel();
@@ -63,13 +67,35 @@ public class PanelProcessing {
     //endregion
 
     //region PanelFilling
-    public void fillSplash() {
-        // The Splash title label.
-        JLabel title = new JLabel("The Great Underground Empire");
+    public void fillTitleAndContinue(JPanel panel, String titleString) {
+        // The title label.
+        JLabel title = new JLabel(titleString);
         title.setFont(new Font("Arial", Font.BOLD, 20));
         title.setHorizontalAlignment(SwingConstants.CENTER);
         title.setVerticalAlignment(SwingConstants.CENTER);
 
+        // Continue button.
+        JButton gotoButton = new JButton("Go to Button");
+
+        if (panel.getName().equals("Splash")) {
+            gotoButton.addActionListener(e -> loadArmory());
+        } else if (panel.getName().equals("Armory")) {
+            gotoButton.addActionListener(e -> loadBattle());
+        }
+
+        gotoButton.setMinimumSize(new Dimension(150, 50));
+        gotoButton.setPreferredSize(new Dimension(150, 50));
+
+        // Panel for button.
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        buttonPanel.add(gotoButton);
+
+        // Adding elements.
+        panel.add(title, BorderLayout.NORTH);
+        panel.add(buttonPanel, BorderLayout.SOUTH);
+    }
+
+    public void fillSplash() {
         // Instructions text area.
         JTextArea instructions = new JTextArea();
         instructions.setText("Game Instructions:\n- Instruction 1\n- Instruction 2\n- Instruction 3");
@@ -89,22 +115,10 @@ public class PanelProcessing {
         instructionPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
         instructionPanel.setAlignmentY(Component.CENTER_ALIGNMENT);
 
-        // Continue button.
-        JButton gotoPlayer = new JButton("Go to Player");
-
-        gotoPlayer.addActionListener(e -> loadArmory());
-
-        gotoPlayer.setMinimumSize(new Dimension(150, 50));
-        gotoPlayer.setPreferredSize(new Dimension(150, 50));
-
-        // Panel for button.
-        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        buttonPanel.add(gotoPlayer);
-
         // Adding elements.
-        splashPanel.add(title, BorderLayout.NORTH);
         splashPanel.add(instructionPanel, BorderLayout.CENTER);
-        splashPanel.add(buttonPanel, BorderLayout.SOUTH);
+
+        fillTitleAndContinue(splashPanel, "The Great Underground Empire");
     }
 
     public void fillArmoryPanel() {
