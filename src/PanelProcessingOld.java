@@ -84,6 +84,7 @@ public class PanelProcessingOld {
 
         gotoButton.setMinimumSize(new Dimension(150, 50));
         gotoButton.setPreferredSize(new Dimension(150, 50));
+        gotoButton.setBackground(Color.WHITE);
 
         // Panel for button.
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
@@ -137,6 +138,16 @@ public class PanelProcessingOld {
             }
             fillArmoryPanel();
         });
+
+        armoryScreen.leftButton.addActionListener(e -> {
+            armoryScreen.leftButton.setBackground(Color.ORANGE);
+            armoryScreen.rightButton.setBackground(Color.WHITE);
+        });
+
+        armoryScreen.rightButton.addActionListener(e -> {
+            armoryScreen.rightButton.setBackground(Color.ORANGE);
+            armoryScreen.leftButton.setBackground(Color.WHITE);
+        });
     }
 
     public void fillArmoryPanel() {
@@ -162,6 +173,10 @@ public class PanelProcessingOld {
         armoryScreen.playerPicture.setIcon(new ImageIcon(new ImageIcon(Objects.requireNonNull(PanelProcessing.class.getResource("/images/knight.png"))).getImage().getScaledInstance(DEFAULT_WIDTH, DEFAULT_HEIGHT, Image.SCALE_SMOOTH)));
 
         armoryScreen.weaponPicture.setIcon(weaponsArray[0]);
+
+        armoryScreen.leftButton.setBackground(Color.WHITE);
+        armoryScreen.rightButton.setBackground(Color.WHITE);
+        armoryScreen.rollButton.setBackground(Color.WHITE);
     }
 
     public void fillBattlePanel() {
@@ -169,7 +184,7 @@ public class PanelProcessingOld {
         playerImage.setIcon(new ImageIcon(
                 new ImageIcon(
                         Objects.requireNonNull(
-                                PanelProcessingOld.class.getResource("images/wizard.png"))).getImage()
+                                PanelProcessingOld.class.getResource("/images/wizard.png"))).getImage()
                         .getScaledInstance(DEFAULT_WIDTH, DEFAULT_HEIGHT, Image.SCALE_SMOOTH)
         ));
         playerImage.setBounds(40, 40, DEFAULT_WIDTH, DEFAULT_HEIGHT);

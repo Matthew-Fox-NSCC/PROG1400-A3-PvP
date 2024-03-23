@@ -6,9 +6,9 @@ public class ArmoryScreen {
     public JList weaponStatList;
     public JButton OKButton;
     public JList playerStatList;
-    private JButton rollButton;
-    private JButton rightButton;
-    private JButton leftButton;
+    public JButton rollButton;
+    public JButton rightButton;
+    public JButton leftButton;
     public JTextArea playerInformation;
     private JPanel innerPanel;
     private JPanel leftPanel;
