@@ -135,8 +135,8 @@ public class PanelProcessing {
     //endregion
 
     //region CustomElements
-    private JList getjList(JLabel weaponImage) {
-        JList list = new JList();
+    private JList<String> getjList(JLabel weaponImage) {
+        JList<String> list = new JList<>();
         list.addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent e) {
                 weaponImage.setIcon(weaponsArray[list.getSelectedIndex()]);
