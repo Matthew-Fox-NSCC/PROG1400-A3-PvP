@@ -2,8 +2,6 @@ import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Objects;
 
 public class PanelProcessing {
@@ -75,11 +73,12 @@ public class PanelProcessing {
         title.setVerticalAlignment(SwingConstants.CENTER);
 
         // Continue button.
-        JButton gotoButton = new JButton("Go to Button");
-
+        JButton gotoButton = new JButton();
         if (panel.getName().equals("Splash")) {
+            gotoButton = new JButton("Go to Armory");
             gotoButton.addActionListener(e -> loadArmory());
         } else if (panel.getName().equals("Armory")) {
+            gotoButton = new JButton("Go to Battle");
             gotoButton.addActionListener(e -> loadBattle());
         }
 
