@@ -16,5 +16,5 @@ public class ArmoryScreen {
     private JPanel centerPanel;
     public JPanel weaponImagePanel;
     public JLabel weaponPicture;
-    private JLabel playerPicture;
+    public JLabel playerPicture;
 }

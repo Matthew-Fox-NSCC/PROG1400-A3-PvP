@@ -4,8 +4,8 @@ import java.util.Objects;
 
 public class PanelProcessingOld {
     //region Variables
-    protected final int DEFAULT_WIDTH = 500;
-    protected final int DEFAULT_HEIGHT = 500;
+    protected final int DEFAULT_WIDTH = 200;
+    protected final int DEFAULT_HEIGHT = 200;
     protected JFrame frame = new JFrame("Player VS Player App");
     protected JPanel splashPanel = new JPanel();
     protected JButton gotoPlayer;
@@ -127,10 +127,12 @@ public class PanelProcessingOld {
             ActiveEntities.player.setClassType(armoryScreen.classSelectionList.getSelectedValue().toString());
             switch (ActiveEntities.player.getClassType()) {
                 case "Wizard":
-                    ActiveEntities.player.setImageURL("pictures/players/wizard.png");
+                    ActiveEntities.player.setImageURL("/images/wizard.png");
+                    armoryScreen.playerPicture.setIcon(new ImageIcon(new ImageIcon(Objects.requireNonNull(PanelProcessing.class.getResource("/images/wizard.png"))).getImage().getScaledInstance(DEFAULT_WIDTH, DEFAULT_HEIGHT, Image.SCALE_SMOOTH)));
                     break;
                 case "Knight":
-                    ActiveEntities.player.setImageURL("pictures/players/knight.jpg");
+                    ActiveEntities.player.setImageURL("/images/knight.png");
+                    armoryScreen.playerPicture.setIcon(new ImageIcon(new ImageIcon(Objects.requireNonNull(PanelProcessing.class.getResource("/images/knight.png"))).getImage().getScaledInstance(DEFAULT_WIDTH, DEFAULT_HEIGHT, Image.SCALE_SMOOTH)));
                     break;
             }
             fillArmoryPanel();
@@ -147,14 +149,17 @@ public class PanelProcessingOld {
                 new ImageIcon(
                         Objects.requireNonNull(
                                 PanelProcessing.class.getResource("/images/axe.png"))).getImage()
-                        .getScaledInstance(200, 200, Image.SCALE_SMOOTH)
+                        .getScaledInstance(DEFAULT_WIDTH, DEFAULT_HEIGHT, Image.SCALE_SMOOTH)
         );
         weaponsArray[1] = new ImageIcon(
                 new ImageIcon(
                         Objects.requireNonNull(
                                 PanelProcessing.class.getResource("/images/sword.png"))).getImage()
-                        .getScaledInstance(200, 200, Image.SCALE_SMOOTH)
+                        .getScaledInstance(DEFAULT_WIDTH, DEFAULT_HEIGHT, Image.SCALE_SMOOTH)
         );
+
+        armoryScreen.classSelectionList.setSelectedIndex(0);
+        armoryScreen.playerPicture.setIcon(new ImageIcon(new ImageIcon(Objects.requireNonNull(PanelProcessing.class.getResource("/images/knight.png"))).getImage().getScaledInstance(DEFAULT_WIDTH, DEFAULT_HEIGHT, Image.SCALE_SMOOTH)));
 
         armoryScreen.weaponPicture.setIcon(weaponsArray[0]);
     }
