@@ -13,9 +13,11 @@ public class PanelProcessing {
     protected JPanel armoryPanel = new JPanel();
     protected ArmoryScreen armoryScreen = new ArmoryScreen();
     protected JPanel battlePanel = new JPanel();
+    protected BattleScreen battleScreen = new BattleScreen();
     protected ImageIcon[] weaponsArray = new ImageIcon[2];
     protected Button buttonSelection;
     protected PlayerCharacter player = ActiveEntities.player;
+    protected EnemyCharacter enemy = ActiveEntities.enemy;
     //endregion
 
     //region PanelStart
@@ -70,15 +72,15 @@ public class PanelProcessing {
      */
     public void loadBattle() {
         frame.remove(armoryScreen.panel);
-        frame.add(battlePanel);
+        frame.add(battleScreen.panel);
         frame.repaint();
         frame.validate();
 
-        battlePanel.setName("Battle");
+        battleScreen.panel.setName("Battle");
 
-        armoryPanel.setLayout(null);
+//        armoryPanel.setLayout(null);
 
-        fillBattlePanel();
+        fillBattle();
     }
     //endregion
 
@@ -279,12 +281,18 @@ public class PanelProcessing {
     /**
      * Fills the battle page with its elements.
      */
-    public void fillBattlePanel() {
-        // Player image.
-        JLabel playerImage = new JLabel((String) null);
-        playerImage.setIcon(new ImageIcon(new ImageIcon(Objects.requireNonNull(PanelProcessing.class.getResource("/images/wizard.png"))).getImage().getScaledInstance(DEFAULT_WIDTH, DEFAULT_HEIGHT, Image.SCALE_SMOOTH)));
-        playerImage.setBounds(40, 40, DEFAULT_WIDTH, DEFAULT_HEIGHT);
-        battlePanel.add(playerImage);
+    public void fillBattle() {
+//        // Player image.
+//        JLabel playerImage = new JLabel((String) null);
+//        playerImage.setIcon(new ImageIcon(new ImageIcon(Objects.requireNonNull(PanelProcessing.class.getResource("/images/wizard.png"))).getImage().getScaledInstance(DEFAULT_WIDTH, DEFAULT_HEIGHT, Image.SCALE_SMOOTH)));
+//        playerImage.setBounds(40, 40, DEFAULT_WIDTH, DEFAULT_HEIGHT);
+//        battlePanel.add(playerImage);
+
+        battleScreen.playerPicture.setIcon(new ImageIcon(new ImageIcon(Objects.requireNonNull(PanelProcessing.class.getResource(player.getImageURL()))).getImage().getScaledInstance(DEFAULT_WIDTH, DEFAULT_HEIGHT, Image.SCALE_SMOOTH)));
+
+        enemy.setImageURL("images/aboleth.png");
+
+        battleScreen.enemyPicture.setIcon(new ImageIcon(new ImageIcon(Objects.requireNonNull(PanelProcessing.class.getResource(enemy.getImageURL()))).getImage().getScaledInstance(DEFAULT_WIDTH, DEFAULT_HEIGHT, Image.SCALE_SMOOTH)));
     }
     //endregion
 
