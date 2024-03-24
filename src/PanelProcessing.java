@@ -19,10 +19,10 @@ public class PanelProcessing {
     protected Equipment weapon = ActiveEntities.equipment;
     //endregion
 
+    //region PanelStart
     /**
      * Calls the initializer method to make the new JFrame.
      */
-    //region PanelStart
     public PanelProcessing() {
         initialize();
     }
@@ -32,6 +32,7 @@ public class PanelProcessing {
      */
     private void initialize() {
         frame.setBounds(800, 250, 1000, 800);
+//        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(new CardLayout(0, 0));
         loadSplash();
@@ -95,10 +96,10 @@ public class PanelProcessing {
             player.setClassType(armoryScreen.classSelectionList.getSelectedValue());
             switch (player.getClassType()) {
                 case "Wizard":
+                    // Player image change.
                     player.setImageURL("/images/wizard.png");
-                    armoryScreen.playerPicture.setIcon(new ImageIcon(new ImageIcon(Objects.requireNonNull(PanelProcessing.class.getResource("/images/wizard.png"))).getImage().getScaledInstance(DEFAULT_WIDTH, DEFAULT_HEIGHT, Image.SCALE_SMOOTH)));
 
-                    // Weapon selection list.
+                    // Weapon selection list change.
                     DefaultListModel<String> weaponWizardList = new DefaultListModel<>();
                     weaponWizardList.addElement("Staff");
                     weaponWizardList.addElement("Wand");
@@ -107,10 +108,10 @@ public class PanelProcessing {
 
                     break;
                 case "Knight":
+                    // Player image change.
                     player.setImageURL("/images/knight.png");
-                    armoryScreen.playerPicture.setIcon(new ImageIcon(new ImageIcon(Objects.requireNonNull(PanelProcessing.class.getResource("/images/knight.png"))).getImage().getScaledInstance(DEFAULT_WIDTH, DEFAULT_HEIGHT, Image.SCALE_SMOOTH)));
 
-                    // Weapon selection list.
+                    // Weapon selection list change.
                     DefaultListModel<String> weaponKnightList = new DefaultListModel<>();
                     weaponKnightList.addElement("Longsword");
                     weaponKnightList.addElement("Axe");
@@ -119,7 +120,34 @@ public class PanelProcessing {
 
                     break;
             }
+            armoryScreen.playerPicture.setIcon(new ImageIcon(new ImageIcon(Objects.requireNonNull(PanelProcessing.class.getResource(player.getImageURL()))).getImage().getScaledInstance(DEFAULT_WIDTH, DEFAULT_HEIGHT, Image.SCALE_SMOOTH)));
             updateArmory();
+        });
+
+        // Weapon selection list.
+        armoryScreen.weaponSelectionList.getSelectionModel().addListSelectionListener(e -> {
+            weapon.setName(armoryScreen.weaponSelectionList.getSelectedValue().toString());
+            switch (weapon.getName()) {
+                case "Longsword":
+                    weapon.setImageURL("images/knight-longsword.png");
+                    break;
+                case "Axe":
+                    weapon.setImageURL("images/knight-axe.png");
+                    break;
+                case "Greatsword":
+                    weapon.setImageURL("images/knight-greatsword.png");
+                    break;
+                case "Staff":
+                    weapon.setImageURL("images/wizard-staff.jpg");
+                    break;
+                case "Wand":
+                    weapon.setImageURL("images/wizard-wand.jpg");
+                    break;
+                case "Grimoire":
+                    weapon.setImageURL("images/wizard-grimoire.jpg");
+                    break;
+            }
+            armoryScreen.weaponPicture.setIcon(new ImageIcon(new ImageIcon(Objects.requireNonNull(PanelProcessing.class.getResource(weapon.getImageURL()))).getImage().getScaledInstance(DEFAULT_WIDTH, DEFAULT_HEIGHT, Image.SCALE_SMOOTH)));
         });
 
         // Left button.
