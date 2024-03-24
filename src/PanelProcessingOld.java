@@ -220,24 +220,4 @@ public class PanelProcessingOld {
         battlePanel.add(playerImage);
     }
     //endregion
-
-    //region CustomElements
-    private JList<String> getjList(JLabel weaponImage) {
-        JList<String> list = new JList<>();
-        list.addListSelectionListener(e -> weaponImage.setIcon(weaponsArray[list.getSelectedIndex()]));
-        list.setModel(new AbstractListModel() {
-            final String[] values = new String[]{"Axe", "Sword"};
-
-            public int getSize() {
-                return values.length;
-            }
-
-            public Object getElementAt(int index) {
-                return values[index];
-            }
-        });
-        list.setBounds(77, 70, 89, 115);
-        return list;
-    }
-    //endregion
 }

@@ -2,7 +2,7 @@ import javax.swing.*;
 
 public class ArmoryScreen {
     public JPanel panel;
-    public JList classSelectionList;
+    public JList<String> classSelectionList;
     public JTextArea weaponStatList;
     public JButton OKButton;
     public JTextArea playerStatList;
