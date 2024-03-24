@@ -19,11 +19,17 @@ public class PanelProcessing {
     protected Equipment weapon = ActiveEntities.equipment;
     //endregion
 
+    /**
+     * Calls the initializer method to make the new JFrame.
+     */
     //region PanelStart
     public PanelProcessing() {
         initialize();
     }
 
+    /**
+     * Initializes the JFrame with all constants.
+     */
     private void initialize() {
         frame.setBounds(800, 250, 1000, 800);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -33,6 +39,9 @@ public class PanelProcessing {
     //endregion
 
     //region PanelLoading
+    /**
+     * Adds the splash page to the JFrame.
+     */
     public void loadSplash() {
         frame.add(splashPanel);
         splashPanel.setLayout(new BorderLayout());
@@ -40,6 +49,9 @@ public class PanelProcessing {
         fillSplash();
     }
 
+    /**
+     * Adds the armory page to the JFrame and removes the previous page.
+     */
     public void loadArmory() {
         frame.remove(splashPanel);
         frame.add(armoryScreen.panel);
@@ -53,6 +65,9 @@ public class PanelProcessing {
         fillArmory();
     }
 
+    /**
+     * Adds the battle page to the JFrame and removes the previous page.
+     */
     public void loadBattle() {
         frame.remove(armoryScreen.panel);
         frame.add(battlePanel);
@@ -68,9 +83,14 @@ public class PanelProcessing {
     //endregion
 
     //region AddListeners
+    /**
+     * Adds all the relevant listeners to elements on the armory page.
+     */
     public void addArmoryListeners() {
+        // OK Button.
         armoryScreen.OKButton.addActionListener(e -> loadBattle());
 
+        // Class selection list.
         armoryScreen.classSelectionList.getSelectionModel().addListSelectionListener(e -> {
             player.setClassType(armoryScreen.classSelectionList.getSelectedValue());
             switch (player.getClassType()) {
@@ -83,21 +103,24 @@ public class PanelProcessing {
                     armoryScreen.playerPicture.setIcon(new ImageIcon(new ImageIcon(Objects.requireNonNull(PanelProcessing.class.getResource("/images/knight.png"))).getImage().getScaledInstance(DEFAULT_WIDTH, DEFAULT_HEIGHT, Image.SCALE_SMOOTH)));
                     break;
             }
-            fillArmoryPanel();
+            updateArmory();
         });
 
+        // Left button.
         armoryScreen.leftButton.addActionListener(e -> {
             armoryScreen.leftButton.setBackground(Color.ORANGE);
             armoryScreen.rightButton.setBackground(Color.WHITE);
             buttonSelection = Button.LEFT;
         });
 
+        // Right button.
         armoryScreen.rightButton.addActionListener(e -> {
             armoryScreen.rightButton.setBackground(Color.ORANGE);
             armoryScreen.leftButton.setBackground(Color.WHITE);
             buttonSelection = Button.RIGHT;
         });
 
+        // Roll button.
         armoryScreen.rollButton.addActionListener(e -> {
             if (buttonSelection == Button.LEFT) {
                 player.rollStats();
@@ -106,12 +129,18 @@ public class PanelProcessing {
                 weapon = new Equipment("Mjölnir", 6, 12);
                 armoryScreen.weaponStatList.setText("Damage: " + weapon.getStrength());
             }
-            fillArmoryPanel();
+            updateArmory();
         });
     }
     //endregion
 
     //region PanelFilling
+    /**
+     * Fills a given panel with a title, a button, and a listener for the button.
+     *
+     * @param panel The panel to fill
+     * @param titleString The title to use in the panel
+     */
     public void fillTitleAndContinue(JPanel panel, String titleString) {
         // The title label.
         JLabel title = new JLabel(titleString);
@@ -142,6 +171,9 @@ public class PanelProcessing {
         panel.add(buttonPanel, BorderLayout.SOUTH);
     }
 
+    /**
+     * Fills the splash page with its elements.
+     */
     public void fillSplash() {
         // Instructions text area.
         JTextArea instructions = new JTextArea();
@@ -165,29 +197,47 @@ public class PanelProcessing {
         // Adding elements.
         splashPanel.add(instructionPanel, BorderLayout.CENTER);
 
+        // Adds title and continue button.
         fillTitleAndContinue(splashPanel, "The Great Underground Empire");
     }
 
-    public void fillArmoryPanel() {
+    /**
+     * Updates the armory when information changes.
+     */
+    public void updateArmory() {
+        // Player information text area.
         armoryScreen.playerInformation.setLineWrap(true);
         armoryScreen.playerInformation.setText(player.toString());
     }
 
+    /**
+     * Fills the armory page with its elements.
+     */
     public void fillArmory() {
+        // Weapon images.
         weaponsArray[0] = new ImageIcon(new ImageIcon(Objects.requireNonNull(PanelProcessing.class.getResource("/images/axe.png"))).getImage().getScaledInstance(DEFAULT_WIDTH, DEFAULT_HEIGHT, Image.SCALE_SMOOTH));
         weaponsArray[1] = new ImageIcon(new ImageIcon(Objects.requireNonNull(PanelProcessing.class.getResource("/images/sword.png"))).getImage().getScaledInstance(DEFAULT_WIDTH, DEFAULT_HEIGHT, Image.SCALE_SMOOTH));
 
+        // Class selection list.
         armoryScreen.classSelectionList.setSelectedIndex(0);
+
+        // Player picture.
         armoryScreen.playerPicture.setIcon(new ImageIcon(new ImageIcon(Objects.requireNonNull(PanelProcessing.class.getResource("/images/knight.png"))).getImage().getScaledInstance(DEFAULT_WIDTH, DEFAULT_HEIGHT, Image.SCALE_SMOOTH)));
 
+        // Weapon picture.
         armoryScreen.weaponPicture.setIcon(weaponsArray[0]);
 
+        // Center buttons.
         armoryScreen.leftButton.setBackground(Color.WHITE);
         armoryScreen.rightButton.setBackground(Color.WHITE);
         armoryScreen.rollButton.setBackground(Color.WHITE);
     }
 
+    /**
+     * Fills the battle page with its elements.
+     */
     public void fillBattlePanel() {
+        // Player image.
         JLabel playerImage = new JLabel((String) null);
         playerImage.setIcon(new ImageIcon(new ImageIcon(Objects.requireNonNull(PanelProcessing.class.getResource("/images/wizard.png"))).getImage().getScaledInstance(DEFAULT_WIDTH, DEFAULT_HEIGHT, Image.SCALE_SMOOTH)));
         playerImage.setBounds(40, 40, DEFAULT_WIDTH, DEFAULT_HEIGHT);
@@ -196,6 +246,9 @@ public class PanelProcessing {
     //endregion
 
     //region Enums
+    /**
+     * Button enum to track which button is pressed in the armory page.
+     */
     protected enum Button {
         LEFT, RIGHT,
     }
