@@ -1,5 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Enumeration;
 import java.util.Objects;
 
 public class PanelProcessingOld {
@@ -14,6 +17,12 @@ public class PanelProcessingOld {
     protected ArmoryScreen armoryScreen = new ArmoryScreen();
     protected JPanel battlePanel = new JPanel();
     protected ImageIcon[] weaponsArray = new ImageIcon[2];
+    protected enum Button {
+        LEFT,
+        RIGHT,
+    }
+
+    protected Button buttonSelection;
     //endregion
 
     //region PanelStart
@@ -142,11 +151,13 @@ public class PanelProcessingOld {
         armoryScreen.leftButton.addActionListener(e -> {
             armoryScreen.leftButton.setBackground(Color.ORANGE);
             armoryScreen.rightButton.setBackground(Color.WHITE);
+            buttonSelection = Button.LEFT;
         });
 
         armoryScreen.rightButton.addActionListener(e -> {
             armoryScreen.rightButton.setBackground(Color.ORANGE);
             armoryScreen.leftButton.setBackground(Color.WHITE);
+            buttonSelection = Button.RIGHT;
         });
     }
 
