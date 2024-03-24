@@ -48,10 +48,10 @@ public class EnemyCharacter extends GameCharacter {
     public void rollStats() {
         Random random = new Random();
 
-        health_points = random.nextInt(3, 12);
-        armor_points = random.nextInt(2, 12);
-        strength_points = random.nextInt(10, 12);
-        dexterity_points = random.nextInt(8, 12);
+        health_points = random.nextInt(60, 100);
+        armor_points = random.nextInt(20, 35);
+        strength_points = random.nextInt(15, 40);
+        dexterity_points = random.nextInt(18, 32);
     }
     //endregion
 }

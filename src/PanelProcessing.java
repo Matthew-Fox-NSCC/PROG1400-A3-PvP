@@ -45,7 +45,7 @@ public class PanelProcessing {
     //region GameMethods
     public void battle() {
         boolean done = false;
-        int secondsToSleep = 1;
+        int secondsToSleep = 3;
         while (!done) {
             // Maximum dexterity is 20.
             final int MAXIMUM_DEXTERITY = 20;
@@ -57,16 +57,17 @@ public class PanelProcessing {
             if (random.nextInt(MAXIMUM_DEXTERITY) <= playerAttackChance) {
                 int playerAttack = player.attack();
                 enemy.defend(playerAttack);
-                battleScreen.playByPlay.append("\n" + player.getClassType() + " attacks " + "Aboleth" + " for " + Integer.toString(playerAttack) + " damage");
+                battleScreen.playByPlay.append("\n" + player.getClassType() + " attacks " + "Aboleth" + " for " + playerAttack + " damage");
             }
+
             if (random.nextInt(MAXIMUM_DEXTERITY) <= enemyAttackChance) {
                 int enemyAttack = enemy.attack();
                 player.defend(enemyAttack);
-                battleScreen.playByPlay.append("\n" + "Aboleth" + " attacks " + player.getClassType() + " for " + Integer.toString(enemyAttack) + " damage");
+                battleScreen.playByPlay.append("\n" + "Aboleth" + " attacks " + player.getClassType() + " for " + enemyAttack + " damage");
             } else {
                 int playerAttack = player.attack();
                 enemy.defend(playerAttack);
-                battleScreen.playByPlay.append("\n" + player.getClassType() + " attacks " + "Aboleth" + " for " + Integer.toString(playerAttack) + " damage");
+                battleScreen.playByPlay.append("\n" + player.getClassType() + " attacks " + "Aboleth" + " for " + playerAttack + " damage");
             }
 
             if (player.getHealth_points() <= 0) {
@@ -79,7 +80,7 @@ public class PanelProcessing {
             }
 
             try {
-                TimeUnit.SECONDS.sleep(secondsToSleep);
+                Thread.sleep(secondsToSleep * 1000);
             } catch (InterruptedException ie) {
                 Thread.currentThread().interrupt();
             }
@@ -342,11 +343,11 @@ public class PanelProcessing {
 //        playerImage.setBounds(40, 40, DEFAULT_WIDTH, DEFAULT_HEIGHT);
 //        battlePanel.add(playerImage);
 
-        battleScreen.playerPicture.setIcon(new ImageIcon(new ImageIcon(Objects.requireNonNull(PanelProcessing.class.getResource(player.getImageURL()))).getImage().getScaledInstance(DEFAULT_WIDTH, DEFAULT_HEIGHT, Image.SCALE_SMOOTH)));
+        battleScreen.playerPicture.setIcon(new ImageIcon(new ImageIcon(Objects.requireNonNull(PanelProcessing.class.getResource(player.getImageURL()))).getImage().getScaledInstance(DEFAULT_WIDTH + 100, DEFAULT_HEIGHT + 100, Image.SCALE_SMOOTH)));
 
         enemy.setImageURL("images/aboleth.png");
 
-        battleScreen.enemyPicture.setIcon(new ImageIcon(new ImageIcon(Objects.requireNonNull(PanelProcessing.class.getResource(enemy.getImageURL()))).getImage().getScaledInstance(DEFAULT_WIDTH, DEFAULT_HEIGHT, Image.SCALE_SMOOTH)));
+        battleScreen.enemyPicture.setIcon(new ImageIcon(new ImageIcon(Objects.requireNonNull(PanelProcessing.class.getResource(enemy.getImageURL()))).getImage().getScaledInstance(DEFAULT_WIDTH + 100, DEFAULT_HEIGHT + 100, Image.SCALE_SMOOTH)));
 
         battleScreen.playerLabel.setText(player.getClassType());
         battleScreen.enemyLabel.setText("Aboleth");
