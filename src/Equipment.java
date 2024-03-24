@@ -7,6 +7,7 @@ public class Equipment {
     //region Variables
     private int minimum;
     private int maximum;
+    private int strength;
     private String name;
     private String imageURL;
     //endregion
@@ -16,6 +17,7 @@ public class Equipment {
         this.name = name;
         this.minimum = minimum;
         this.maximum = maximum;
+        this.strength = this.calc();
     }
 
     public Equipment(String name, int minimum, int maximum, String imageURL) {
@@ -23,6 +25,7 @@ public class Equipment {
         this.minimum = minimum;
         this.maximum = maximum;
         this.imageURL = imageURL;
+        this.strength = this.calc();
     }
 
     public Equipment() {}
@@ -35,6 +38,10 @@ public class Equipment {
 
     public int getMaximum() {
         return maximum;
+    }
+
+    public int getStrength() {
+        return strength;
     }
 
     public String getName() {
@@ -63,6 +70,10 @@ public class Equipment {
         this.maximum = maximum;
     }
 
+    public void setStrength(int strength) {
+        this.strength = strength;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -73,7 +84,7 @@ public class Equipment {
     //endregion
 
     //region GameMethods
-    public int calc() {
+    private int calc() {
         Random random = new Random();
         return random.nextInt(minimum, maximum);
     }

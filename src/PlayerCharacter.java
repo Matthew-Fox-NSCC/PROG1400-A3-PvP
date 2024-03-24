@@ -1,4 +1,3 @@
-import java.util.HashMap;
 import java.util.Random;
 
 public class PlayerCharacter extends GameCharacter {
@@ -71,12 +70,12 @@ public class PlayerCharacter extends GameCharacter {
         // Strength is base attack and dexterity modifies the hit rate
         // Points are scaled out of 10
         // Equipment weapon adds bonus attack damage
-        return this.strength_points + weapon.calc();
+        return this.strength_points + weapon.getStrength();
     }
 
     @Override
     public void defend(int damage) {
-        int finalDamage = damage  - this.armor_points - this.getArmor().calc();
+        int finalDamage = damage  - this.armor_points - this.getArmor().getStrength();
         this.health_points -= finalDamage;
     }
 
