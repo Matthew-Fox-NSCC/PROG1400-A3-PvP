@@ -1,8 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.Enumeration;
 import java.util.Objects;
 
 public class PanelProcessingOld {
@@ -23,6 +20,8 @@ public class PanelProcessingOld {
     }
 
     protected Button buttonSelection;
+    protected PlayerCharacter player = ActiveEntities.player;
+    protected Equipment weapon = ActiveEntities.equipment;
     //endregion
 
     //region PanelStart
@@ -134,14 +133,14 @@ public class PanelProcessingOld {
         armoryScreen.OKButton.addActionListener(e -> loadBattle());
 
         armoryScreen.classSelectionList.getSelectionModel().addListSelectionListener(e -> {
-            ActiveEntities.player.setClassType(armoryScreen.classSelectionList.getSelectedValue().toString());
-            switch (ActiveEntities.player.getClassType()) {
+            player.setClassType(armoryScreen.classSelectionList.getSelectedValue().toString());
+            switch (player.getClassType()) {
                 case "Wizard":
-                    ActiveEntities.player.setImageURL("/images/wizard.png");
+                    player.setImageURL("/images/wizard.png");
                     armoryScreen.playerPicture.setIcon(new ImageIcon(new ImageIcon(Objects.requireNonNull(PanelProcessing.class.getResource("/images/wizard.png"))).getImage().getScaledInstance(DEFAULT_WIDTH, DEFAULT_HEIGHT, Image.SCALE_SMOOTH)));
                     break;
                 case "Knight":
-                    ActiveEntities.player.setImageURL("/images/knight.png");
+                    player.setImageURL("/images/knight.png");
                     armoryScreen.playerPicture.setIcon(new ImageIcon(new ImageIcon(Objects.requireNonNull(PanelProcessing.class.getResource("/images/knight.png"))).getImage().getScaledInstance(DEFAULT_WIDTH, DEFAULT_HEIGHT, Image.SCALE_SMOOTH)));
                     break;
             }
@@ -159,11 +158,30 @@ public class PanelProcessingOld {
             armoryScreen.leftButton.setBackground(Color.WHITE);
             buttonSelection = Button.RIGHT;
         });
+
+        armoryScreen.rollButton.addActionListener(e -> {
+            if (buttonSelection == Button.LEFT) {
+                player.rollStats();
+                armoryScreen.playerStatList.setText(
+                        "Health: " + player.getHealth_points() + "\n"
+                        + "Armor: " + player.getArmor_points() + "\n"
+                        + "Strength: " + player.getStrength_points() + "\n"
+                        + "Dexterity: " + player.getDexterity_points()
+                );
+            }
+            else if (buttonSelection == Button.RIGHT) {
+                weapon = new Equipment("Mjölnir", 6, 12);
+                armoryScreen.weaponStatList.setText(
+                        "Damage: " + weapon.getStrength()
+                );
+            }
+            fillArmoryPanel();
+        });
     }
 
     public void fillArmoryPanel() {
         armoryScreen.playerInformation.setLineWrap(true);
-        armoryScreen.playerInformation.setText(ActiveEntities.player.toString());
+        armoryScreen.playerInformation.setText(player.toString());
     }
 
     public void fillArmory() {

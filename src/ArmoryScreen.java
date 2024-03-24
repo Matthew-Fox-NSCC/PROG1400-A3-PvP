@@ -3,9 +3,9 @@ import javax.swing.*;
 public class ArmoryScreen {
     public JPanel panel;
     public JList classSelectionList;
-    public JList weaponStatList;
+    public JTextArea weaponStatList;
     public JButton OKButton;
-    public JList playerStatList;
+    public JTextArea playerStatList;
     public JButton rollButton;
     public JButton rightButton;
     public JButton leftButton;
