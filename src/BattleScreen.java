@@ -5,7 +5,9 @@ public class BattleScreen {
     public JPanel enemyPanel;
     public JLabel enemyPicture;
     public JLabel playerPicture;
-    private JTextArea textArea1;
-    private JButton FIGHTButton;
+    public JTextArea playByPlay;
+    public JButton FIGHTButton;
     private JPanel playerPanel;
+    public JLabel playerLabel;
+    public JLabel enemyLabel;
 }

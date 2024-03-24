@@ -1,6 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
 import java.util.Objects;
+import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 public class PanelProcessing {
     //region Variables
@@ -40,6 +42,51 @@ public class PanelProcessing {
     }
     //endregion
 
+    //region GameMethods
+    public void battle() {
+        boolean done = false;
+        int secondsToSleep = 1;
+        while (!done) {
+            // Maximum dexterity is 20.
+            final int MAXIMUM_DEXTERITY = 20;
+            int playerAttackChance = 100 / (player.getDexterity_points() * (100 / MAXIMUM_DEXTERITY));
+            int enemyAttackChance = 100 / (enemy.getDexterity_points() * (100 / MAXIMUM_DEXTERITY));
+
+            Random random = new Random();
+
+            if (random.nextInt(MAXIMUM_DEXTERITY) <= playerAttackChance) {
+                int playerAttack = player.attack();
+                enemy.defend(playerAttack);
+                battleScreen.playByPlay.append("\n" + player.getClassType() + " attacks " + "Aboleth" + " for " + Integer.toString(playerAttack) + " damage");
+            }
+            if (random.nextInt(MAXIMUM_DEXTERITY) <= enemyAttackChance) {
+                int enemyAttack = enemy.attack();
+                player.defend(enemyAttack);
+                battleScreen.playByPlay.append("\n" + "Aboleth" + " attacks " + player.getClassType() + " for " + Integer.toString(enemyAttack) + " damage");
+            } else {
+                int playerAttack = player.attack();
+                enemy.defend(playerAttack);
+                battleScreen.playByPlay.append("\n" + player.getClassType() + " attacks " + "Aboleth" + " for " + Integer.toString(playerAttack) + " damage");
+            }
+
+            if (player.getHealth_points() <= 0) {
+                done = true;
+                battleScreen.playByPlay.append("\n" + player.getClassType() + " has died");
+            }
+            if (enemy.getHealth_points() <= 0) {
+                done = true;
+                battleScreen.playByPlay.append("\n" + "Aboleth" + " has died");
+            }
+
+            try {
+                TimeUnit.SECONDS.sleep(secondsToSleep);
+            } catch (InterruptedException ie) {
+                Thread.currentThread().interrupt();
+            }
+        }
+    }
+    //endregion
+
     //region PanelLoading
     /**
      * Adds the splash page to the JFrame.
@@ -73,6 +120,7 @@ public class PanelProcessing {
     public void loadBattle() {
         frame.remove(armoryScreen.panel);
         frame.add(battleScreen.panel);
+        addBattleListeners();
         frame.repaint();
         frame.validate();
 
@@ -175,6 +223,12 @@ public class PanelProcessing {
                 armoryScreen.weaponStatList.setText("Damage: " + player.getWeapon().getStrength());
             }
             updateArmory();
+        });
+    }
+
+    public void addBattleListeners() {
+        battleScreen.FIGHTButton.addActionListener(e -> {
+            battle();
         });
     }
     //endregion
@@ -293,6 +347,11 @@ public class PanelProcessing {
         enemy.setImageURL("images/aboleth.png");
 
         battleScreen.enemyPicture.setIcon(new ImageIcon(new ImageIcon(Objects.requireNonNull(PanelProcessing.class.getResource(enemy.getImageURL()))).getImage().getScaledInstance(DEFAULT_WIDTH, DEFAULT_HEIGHT, Image.SCALE_SMOOTH)));
+
+        battleScreen.playerLabel.setText(player.getClassType());
+        battleScreen.enemyLabel.setText("Aboleth");
+
+        battleScreen.FIGHTButton.setBackground(Color.WHITE);
     }
     //endregion
 
