@@ -21,27 +21,24 @@ public class PlayerCharacter extends GameCharacter {
     }
     //endregion
 
-    //region Getters
+    //region Getters&Setters
     public String getClassType() {
         return classType;
+    }
+    public void setClassType(String classType) {
+        this.classType = classType;
     }
 
     public Equipment getWeapon() {
         return weapon;
     }
 
-    public Equipment getArmor() {
-        return armor;
-    }
-    //endregion
-
-    //region Setters
-    public void setClassType(String classType) {
-        this.classType = classType;
-    }
-
     public void setWeapon(Equipment weapon) {
         this.weapon = weapon;
+    }
+
+    public Equipment getArmor() {
+        return armor;
     }
 
     public void setArmor(Equipment armor) {
@@ -60,8 +57,10 @@ public class PlayerCharacter extends GameCharacter {
     //endregion
 
     //region CharacterMethods
+
     /**
      * Gets the attack value.
+     *
      * @return The player attack value
      */
     @Override
@@ -75,7 +74,7 @@ public class PlayerCharacter extends GameCharacter {
 
     @Override
     public void defend(int damage) {
-        int finalDamage = damage  - this.armor_points - this.getArmor().getStrength();
+        int finalDamage = damage - this.armor_points - this.getArmor().getStrength();
         this.health_points -= finalDamage;
     }
 
@@ -108,14 +107,7 @@ public class PlayerCharacter extends GameCharacter {
     //region toString
     @Override
     public String toString() {
-        return "class = " + classType + '\n' +
-                "weapon = " + weapon + '\n' +
-                "armor = " + armor + '\n' +
-                "health = " + health_points + '\n' +
-                "armor_points = " + armor_points + '\n' +
-                "strength = " + strength_points + '\n' +
-                "dexterity = " + dexterity_points + '\n' +
-                "imageURL = " + imageURL;
+        return "class = " + classType + '\n' + "weapon = " + weapon + '\n' + "armor = " + armor + '\n' + "health = " + health_points + '\n' + "armor_points = " + armor_points + '\n' + "strength = " + strength_points + '\n' + "dexterity = " + dexterity_points + '\n' + "imageURL = " + imageURL;
     }
     //endregion
 }

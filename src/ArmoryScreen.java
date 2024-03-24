@@ -10,11 +10,11 @@ public class ArmoryScreen {
     public JButton rightButton;
     public JButton leftButton;
     public JTextArea playerInformation;
+    public JPanel weaponImagePanel;
+    public JLabel weaponPicture;
+    public JLabel playerPicture;
     private JPanel innerPanel;
     private JPanel leftPanel;
     private JPanel rightPanel;
     private JPanel centerPanel;
-    public JPanel weaponImagePanel;
-    public JLabel weaponPicture;
-    public JLabel playerPicture;
 }

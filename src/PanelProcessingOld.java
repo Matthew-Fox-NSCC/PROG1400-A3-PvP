@@ -14,11 +14,6 @@ public class PanelProcessingOld {
     protected ArmoryScreen armoryScreen = new ArmoryScreen();
     protected JPanel battlePanel = new JPanel();
     protected ImageIcon[] weaponsArray = new ImageIcon[2];
-    protected enum Button {
-        LEFT,
-        RIGHT,
-    }
-
     protected Button buttonSelection;
     protected PlayerCharacter player = ActiveEntities.player;
     protected Equipment weapon = ActiveEntities.equipment;
@@ -69,6 +64,50 @@ public class PanelProcessingOld {
         armoryPanel.setLayout(null);
 
         fillBattlePanel();
+    }
+    //endregion
+
+    //region AddListeners
+    public void addArmoryListeners() {
+        armoryScreen.OKButton.addActionListener(e -> loadBattle());
+
+        armoryScreen.classSelectionList.getSelectionModel().addListSelectionListener(e -> {
+            player.setClassType(armoryScreen.classSelectionList.getSelectedValue());
+            switch (player.getClassType()) {
+                case "Wizard":
+                    player.setImageURL("/images/wizard.png");
+                    armoryScreen.playerPicture.setIcon(new ImageIcon(new ImageIcon(Objects.requireNonNull(PanelProcessing.class.getResource("/images/wizard.png"))).getImage().getScaledInstance(DEFAULT_WIDTH, DEFAULT_HEIGHT, Image.SCALE_SMOOTH)));
+                    break;
+                case "Knight":
+                    player.setImageURL("/images/knight.png");
+                    armoryScreen.playerPicture.setIcon(new ImageIcon(new ImageIcon(Objects.requireNonNull(PanelProcessing.class.getResource("/images/knight.png"))).getImage().getScaledInstance(DEFAULT_WIDTH, DEFAULT_HEIGHT, Image.SCALE_SMOOTH)));
+                    break;
+            }
+            fillArmoryPanel();
+        });
+
+        armoryScreen.leftButton.addActionListener(e -> {
+            armoryScreen.leftButton.setBackground(Color.ORANGE);
+            armoryScreen.rightButton.setBackground(Color.WHITE);
+            buttonSelection = Button.LEFT;
+        });
+
+        armoryScreen.rightButton.addActionListener(e -> {
+            armoryScreen.rightButton.setBackground(Color.ORANGE);
+            armoryScreen.leftButton.setBackground(Color.WHITE);
+            buttonSelection = Button.RIGHT;
+        });
+
+        armoryScreen.rollButton.addActionListener(e -> {
+            if (buttonSelection == Button.LEFT) {
+                player.rollStats();
+                armoryScreen.playerStatList.setText("Health: " + player.getHealth_points() + "\n" + "Armor: " + player.getArmor_points() + "\n" + "Strength: " + player.getStrength_points() + "\n" + "Dexterity: " + player.getDexterity_points());
+            } else if (buttonSelection == Button.RIGHT) {
+                weapon = new Equipment("Mjölnir", 6, 12);
+                armoryScreen.weaponStatList.setText("Damage: " + weapon.getStrength());
+            }
+            fillArmoryPanel();
+        });
     }
     //endregion
 
@@ -129,74 +168,14 @@ public class PanelProcessingOld {
         fillTitleAndContinue(splashPanel, "The Great Underground Empire");
     }
 
-    public void addArmoryListeners() {
-        armoryScreen.OKButton.addActionListener(e -> loadBattle());
-
-        armoryScreen.classSelectionList.getSelectionModel().addListSelectionListener(e -> {
-            player.setClassType(armoryScreen.classSelectionList.getSelectedValue().toString());
-            switch (player.getClassType()) {
-                case "Wizard":
-                    player.setImageURL("/images/wizard.png");
-                    armoryScreen.playerPicture.setIcon(new ImageIcon(new ImageIcon(Objects.requireNonNull(PanelProcessing.class.getResource("/images/wizard.png"))).getImage().getScaledInstance(DEFAULT_WIDTH, DEFAULT_HEIGHT, Image.SCALE_SMOOTH)));
-                    break;
-                case "Knight":
-                    player.setImageURL("/images/knight.png");
-                    armoryScreen.playerPicture.setIcon(new ImageIcon(new ImageIcon(Objects.requireNonNull(PanelProcessing.class.getResource("/images/knight.png"))).getImage().getScaledInstance(DEFAULT_WIDTH, DEFAULT_HEIGHT, Image.SCALE_SMOOTH)));
-                    break;
-            }
-            fillArmoryPanel();
-        });
-
-        armoryScreen.leftButton.addActionListener(e -> {
-            armoryScreen.leftButton.setBackground(Color.ORANGE);
-            armoryScreen.rightButton.setBackground(Color.WHITE);
-            buttonSelection = Button.LEFT;
-        });
-
-        armoryScreen.rightButton.addActionListener(e -> {
-            armoryScreen.rightButton.setBackground(Color.ORANGE);
-            armoryScreen.leftButton.setBackground(Color.WHITE);
-            buttonSelection = Button.RIGHT;
-        });
-
-        armoryScreen.rollButton.addActionListener(e -> {
-            if (buttonSelection == Button.LEFT) {
-                player.rollStats();
-                armoryScreen.playerStatList.setText(
-                        "Health: " + player.getHealth_points() + "\n"
-                        + "Armor: " + player.getArmor_points() + "\n"
-                        + "Strength: " + player.getStrength_points() + "\n"
-                        + "Dexterity: " + player.getDexterity_points()
-                );
-            }
-            else if (buttonSelection == Button.RIGHT) {
-                weapon = new Equipment("Mjölnir", 6, 12);
-                armoryScreen.weaponStatList.setText(
-                        "Damage: " + weapon.getStrength()
-                );
-            }
-            fillArmoryPanel();
-        });
-    }
-
     public void fillArmoryPanel() {
         armoryScreen.playerInformation.setLineWrap(true);
         armoryScreen.playerInformation.setText(player.toString());
     }
 
     public void fillArmory() {
-        weaponsArray[0] = new ImageIcon(
-                new ImageIcon(
-                        Objects.requireNonNull(
-                                PanelProcessing.class.getResource("/images/axe.png"))).getImage()
-                        .getScaledInstance(DEFAULT_WIDTH, DEFAULT_HEIGHT, Image.SCALE_SMOOTH)
-        );
-        weaponsArray[1] = new ImageIcon(
-                new ImageIcon(
-                        Objects.requireNonNull(
-                                PanelProcessing.class.getResource("/images/sword.png"))).getImage()
-                        .getScaledInstance(DEFAULT_WIDTH, DEFAULT_HEIGHT, Image.SCALE_SMOOTH)
-        );
+        weaponsArray[0] = new ImageIcon(new ImageIcon(Objects.requireNonNull(PanelProcessing.class.getResource("/images/axe.png"))).getImage().getScaledInstance(DEFAULT_WIDTH, DEFAULT_HEIGHT, Image.SCALE_SMOOTH));
+        weaponsArray[1] = new ImageIcon(new ImageIcon(Objects.requireNonNull(PanelProcessing.class.getResource("/images/sword.png"))).getImage().getScaledInstance(DEFAULT_WIDTH, DEFAULT_HEIGHT, Image.SCALE_SMOOTH));
 
         armoryScreen.classSelectionList.setSelectedIndex(0);
         armoryScreen.playerPicture.setIcon(new ImageIcon(new ImageIcon(Objects.requireNonNull(PanelProcessing.class.getResource("/images/knight.png"))).getImage().getScaledInstance(DEFAULT_WIDTH, DEFAULT_HEIGHT, Image.SCALE_SMOOTH)));
@@ -210,14 +189,13 @@ public class PanelProcessingOld {
 
     public void fillBattlePanel() {
         JLabel playerImage = new JLabel((String) null);
-        playerImage.setIcon(new ImageIcon(
-                new ImageIcon(
-                        Objects.requireNonNull(
-                                PanelProcessingOld.class.getResource("/images/wizard.png"))).getImage()
-                        .getScaledInstance(DEFAULT_WIDTH, DEFAULT_HEIGHT, Image.SCALE_SMOOTH)
-        ));
+        playerImage.setIcon(new ImageIcon(new ImageIcon(Objects.requireNonNull(PanelProcessingOld.class.getResource("/images/wizard.png"))).getImage().getScaledInstance(DEFAULT_WIDTH, DEFAULT_HEIGHT, Image.SCALE_SMOOTH)));
         playerImage.setBounds(40, 40, DEFAULT_WIDTH, DEFAULT_HEIGHT);
         battlePanel.add(playerImage);
     }
     //endregion
+
+    protected enum Button {
+        LEFT, RIGHT,
+    }
 }

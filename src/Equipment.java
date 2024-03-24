@@ -28,28 +28,49 @@ public class Equipment {
         this.strength = this.calc();
     }
 
-    public Equipment() {}
+    public Equipment() {
+    }
     //endregion
 
-    //region Getters
+    //region Getters&Setters
     public int getMinimum() {
         return minimum;
+    }
+
+    public void setMinimum(int minimum) {
+        this.minimum = minimum;
     }
 
     public int getMaximum() {
         return maximum;
     }
 
+    public void setMaximum(int maximum) {
+        this.maximum = maximum;
+    }
+
     public int getStrength() {
         return strength;
+    }
+
+    public void setStrength(int strength) {
+        this.strength = strength;
     }
 
     public String getName() {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getImageURL() {
         return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
     }
 
     public ImageIcon getImageIcon() {
@@ -58,28 +79,6 @@ public class Equipment {
 
     public ImageIcon getImageIcon(int width, int height) {
         return new ImageIcon(new javax.swing.ImageIcon(Objects.requireNonNull(getClass().getResource(imageURL))).getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH));
-    }
-    //endregion
-
-    //region Setters
-    public void setMinimum(int minimum) {
-        this.minimum = minimum;
-    }
-
-    public void setMaximum(int maximum) {
-        this.maximum = maximum;
-    }
-
-    public void setStrength(int strength) {
-        this.strength = strength;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setImageURL(String imageURL) {
-        this.imageURL = imageURL;
     }
     //endregion
 
@@ -93,9 +92,7 @@ public class Equipment {
     //region toString
     @Override
     public String toString() {
-        return "Equipment{" +
-                "name='" + name + '\'' +
-                '}';
+        return "Equipment{" + "name='" + name + '\'' + '}';
     }
     //endregion
 }
