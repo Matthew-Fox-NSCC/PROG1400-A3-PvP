@@ -16,7 +16,6 @@ public class PanelProcessing {
     protected ImageIcon[] weaponsArray = new ImageIcon[2];
     protected Button buttonSelection;
     protected PlayerCharacter player = ActiveEntities.player;
-    protected Equipment weapon = ActiveEntities.equipment;
     //endregion
 
     //region PanelStart
@@ -126,28 +125,28 @@ public class PanelProcessing {
 
         // Weapon selection list.
         armoryScreen.weaponSelectionList.getSelectionModel().addListSelectionListener(e -> {
-            weapon.setName(armoryScreen.weaponSelectionList.getSelectedValue().toString());
-            switch (weapon.getName()) {
+            player.getWeapon().setName(armoryScreen.weaponSelectionList.getSelectedValue().toString());
+            switch (player.getWeapon().getName()) {
                 case "Longsword":
-                    weapon.setImageURL("images/knight-longsword.png");
+                    player.getWeapon().setImageURL("images/knight-longsword.png");
                     break;
                 case "Axe":
-                    weapon.setImageURL("images/knight-axe.png");
+                    player.getWeapon().setImageURL("images/knight-axe.png");
                     break;
                 case "Greatsword":
-                    weapon.setImageURL("images/knight-greatsword.png");
+                    player.getWeapon().setImageURL("images/knight-greatsword.png");
                     break;
                 case "Staff":
-                    weapon.setImageURL("images/wizard-staff.jpg");
+                    player.getWeapon().setImageURL("images/wizard-staff.jpg");
                     break;
                 case "Wand":
-                    weapon.setImageURL("images/wizard-wand.jpg");
+                    player.getWeapon().setImageURL("images/wizard-wand.jpg");
                     break;
                 case "Grimoire":
-                    weapon.setImageURL("images/wizard-grimoire.jpg");
+                    player.getWeapon().setImageURL("images/wizard-grimoire.jpg");
                     break;
             }
-            armoryScreen.weaponPicture.setIcon(new ImageIcon(new ImageIcon(Objects.requireNonNull(PanelProcessing.class.getResource(weapon.getImageURL()))).getImage().getScaledInstance(DEFAULT_WIDTH, DEFAULT_HEIGHT, Image.SCALE_SMOOTH)));
+            armoryScreen.weaponPicture.setIcon(new ImageIcon(new ImageIcon(Objects.requireNonNull(PanelProcessing.class.getResource(player.getWeapon().getImageURL()))).getImage().getScaledInstance(DEFAULT_WIDTH, DEFAULT_HEIGHT, Image.SCALE_SMOOTH)));
         });
 
         // Left button.
@@ -170,8 +169,8 @@ public class PanelProcessing {
                 player.rollStats();
                 armoryScreen.playerStatList.setText("Health: " + player.getHealth_points() + "\n" + "Armor: " + player.getArmor_points() + "\n" + "Strength: " + player.getStrength_points() + "\n" + "Dexterity: " + player.getDexterity_points());
             } else if (buttonSelection == Button.RIGHT) {
-                weapon = new Equipment("Mjölnir", 6, 12);
-                armoryScreen.weaponStatList.setText("Damage: " + weapon.getStrength());
+                player.getWeapon().calculate(6, 12);
+                armoryScreen.weaponStatList.setText("Damage: " + player.getWeapon().getStrength());
             }
             updateArmory();
         });

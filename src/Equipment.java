@@ -87,6 +87,12 @@ public class Equipment {
         Random random = new Random();
         return random.nextInt(minimum, maximum);
     }
+
+    public void calculate(int minimum, int maximum) {
+        this.minimum = minimum;
+        this.maximum = maximum;
+        this.strength = this.calc();
+    }
     //endregion
 
     //region toString
