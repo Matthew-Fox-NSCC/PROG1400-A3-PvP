@@ -17,4 +17,5 @@ public class ArmoryScreen {
     private JPanel leftPanel;
     private JPanel rightPanel;
     private JPanel centerPanel;
+    public JList weaponSelectionList;
 }

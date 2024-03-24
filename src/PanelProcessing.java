@@ -97,10 +97,26 @@ public class PanelProcessing {
                 case "Wizard":
                     player.setImageURL("/images/wizard.png");
                     armoryScreen.playerPicture.setIcon(new ImageIcon(new ImageIcon(Objects.requireNonNull(PanelProcessing.class.getResource("/images/wizard.png"))).getImage().getScaledInstance(DEFAULT_WIDTH, DEFAULT_HEIGHT, Image.SCALE_SMOOTH)));
+
+                    // Weapon selection list.
+                    DefaultListModel<String> weaponWizardList = new DefaultListModel<>();
+                    weaponWizardList.addElement("Staff");
+                    weaponWizardList.addElement("Wand");
+                    weaponWizardList.addElement("Grimoire");
+                    armoryScreen.weaponSelectionList.setModel(weaponWizardList);
+
                     break;
                 case "Knight":
                     player.setImageURL("/images/knight.png");
                     armoryScreen.playerPicture.setIcon(new ImageIcon(new ImageIcon(Objects.requireNonNull(PanelProcessing.class.getResource("/images/knight.png"))).getImage().getScaledInstance(DEFAULT_WIDTH, DEFAULT_HEIGHT, Image.SCALE_SMOOTH)));
+
+                    // Weapon selection list.
+                    DefaultListModel<String> weaponKnightList = new DefaultListModel<>();
+                    weaponKnightList.addElement("Longsword");
+                    weaponKnightList.addElement("Axe");
+                    weaponKnightList.addElement("Greatsword");
+                    armoryScreen.weaponSelectionList.setModel(weaponKnightList);
+
                     break;
             }
             updateArmory();
