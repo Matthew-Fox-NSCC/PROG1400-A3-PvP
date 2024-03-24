@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class EnemyCharacter extends GameCharacter {
     //region Constructors
     public EnemyCharacter(int health_points, int armor_points, int strength_points, int dexterity_points) {
@@ -40,6 +42,16 @@ public class EnemyCharacter extends GameCharacter {
 
     @Override
     public void die() {
+    }
+
+    @Override
+    public void rollStats() {
+        Random random = new Random();
+
+        health_points = random.nextInt(3, 12);
+        armor_points = random.nextInt(2, 12);
+        strength_points = random.nextInt(10, 12);
+        dexterity_points = random.nextInt(8, 12);
     }
     //endregion
 }

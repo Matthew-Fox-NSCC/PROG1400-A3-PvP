@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.HashMap;
 import java.util.Objects;
 
 public abstract class GameCharacter {
@@ -88,6 +89,8 @@ public abstract class GameCharacter {
     public abstract void defend(int damage);
 
     public abstract void die();
+
+    public abstract void rollStats();
     //endregion
 
     //region toString

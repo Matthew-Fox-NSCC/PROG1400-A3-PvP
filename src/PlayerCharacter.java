@@ -1,3 +1,6 @@
+import java.util.HashMap;
+import java.util.Random;
+
 public class PlayerCharacter extends GameCharacter {
     //region Variables
     private String classType;
@@ -80,6 +83,27 @@ public class PlayerCharacter extends GameCharacter {
     @Override
     public void die() {
     }
+
+    @Override
+    public void rollStats() {
+        Random random = new Random();
+
+        switch (this.classType) {
+            case "Knight":
+                health_points = random.nextInt(6, 12);
+                armor_points = random.nextInt(6, 12);
+                strength_points = random.nextInt(6, 12);
+                dexterity_points = random.nextInt(6, 12);
+                break;
+            case "Wizard":
+                health_points = random.nextInt(3, 12);
+                armor_points = random.nextInt(2, 12);
+                strength_points = random.nextInt(10, 12);
+                dexterity_points = random.nextInt(8, 12);
+                break;
+        }
+    }
+
     //endregion
 
     //region toString
