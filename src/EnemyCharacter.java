@@ -12,10 +12,7 @@ public class EnemyCharacter extends GameCharacter {
 
     public EnemyCharacter() {
         super();
-        this.health_points = 10;
-        this.armor_points = 10;
-        this.strength_points = 10;
-        this.dexterity_points = 10;
+        rollStats();
         this.imageURL = "pictures/enemies/aboleth.jpg";
     }
     //endregion

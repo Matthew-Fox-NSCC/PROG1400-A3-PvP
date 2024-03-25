@@ -49,18 +49,16 @@ public class PanelProcessing {
         while (!done) {
             // Maximum dexterity is 20.
             final int MAXIMUM_DEXTERITY = 20;
-            int playerAttackChance = 100 / (player.getDexterity_points() * (100 / MAXIMUM_DEXTERITY));
-            int enemyAttackChance = 100 / (enemy.getDexterity_points() * (100 / MAXIMUM_DEXTERITY));
 
             Random random = new Random();
 
-            if (random.nextInt(MAXIMUM_DEXTERITY) <= playerAttackChance) {
+            if (random.nextInt(MAXIMUM_DEXTERITY) <= player.getDexterity_points()) {
                 int playerAttack = player.attack();
                 enemy.defend(playerAttack);
                 battleScreen.playByPlay.append("\n" + player.getClassType() + " attacks " + "Aboleth" + " for " + playerAttack + " damage");
             }
 
-            if (random.nextInt(MAXIMUM_DEXTERITY) <= enemyAttackChance) {
+            if (random.nextInt(MAXIMUM_DEXTERITY) <= enemy.getDexterity_points()) {
                 int enemyAttack = enemy.attack();
                 player.defend(enemyAttack);
                 battleScreen.playByPlay.append("\n" + "Aboleth" + " attacks " + player.getClassType() + " for " + enemyAttack + " damage");
@@ -228,9 +226,7 @@ public class PanelProcessing {
     }
 
     public void addBattleListeners() {
-        battleScreen.FIGHTButton.addActionListener(e -> {
-            battle();
-        });
+        battleScreen.FIGHTButton.addActionListener(e -> battle());
     }
     //endregion
 
